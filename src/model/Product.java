@@ -109,16 +109,11 @@ public class Product {
 			return false;
 		return true;
 	}
-
+   
 
 	public List<Provider> getProviders() {
 		return providers;
 	}
-
-
-	//	public void setProviders(Provider provider1) {
-	//		this.providers = provider1;
-	//	}
 
 
 }
