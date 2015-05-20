@@ -1,5 +1,7 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,8 +10,12 @@ import java.util.Map;
 /**
  * Created by Andrea on 07/05/15.
  */
+
+@Entity
 public class Catalogo {
+    @OneToMany
     private Map<String, Prodotto> products;
+
 
     public Catalogo() {
         this.products = new HashMap<String, Prodotto>();

@@ -1,0 +1,26 @@
+.container {
+    display: inline;
+    height: 500px;
+    width: 500px;
+    background-color: red;
+}
+
+.textContainer {
+    display: block;
+    background-color: aqua;
+    width: 250px;
+    height: 250px;
+}
+
+.textContainer h2{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+
+.textContainer p{
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+}
+

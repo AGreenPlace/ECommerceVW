@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Catalogo</title>
+  <link href="css/css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   ${currentBodyContent}

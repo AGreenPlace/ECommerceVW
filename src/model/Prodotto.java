@@ -1,9 +1,16 @@
 package model;
 
+import javax.persistence.*;
+
 /**
  * Created by Andrea on 07/05/15.
  */
+
+@Entity
 public class Prodotto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private String code;
     private String description;
