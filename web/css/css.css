@@ -10,6 +10,8 @@
     background-color: aqua;
     width: 250px;
     height: 250px;
+    float: left;
+
 }
 
 .textContainer h2{
@@ -22,5 +24,12 @@
     width: 100px;
     height: 100px;
     background-color: brown;
+}
+
+.container img{
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    float: left;
 }
 

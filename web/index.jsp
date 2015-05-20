@@ -14,8 +14,9 @@
   </head>
   <body>
   <f:view>
-    <h:commandButton action="#{catalogViewController.displayCatalog}" value="aaa"/>
+    <h:form>
+    <h:commandButton action="#{catalogViewController.displayCatalog}" value="av"/>
+    </h:form>
   </f:view>
-
   </body>
 </html>

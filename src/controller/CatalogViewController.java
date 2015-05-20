@@ -18,7 +18,7 @@ import java.util.List;
  */
 //@WebServlet("/consultCatalog")
 @ManagedBean
-public class CatalogViewController extends HttpServlet{
+public class CatalogViewController{
     @EJB
     private MainController mainController;
     private String catalogHTMLDescription;
