@@ -16,6 +16,7 @@ public class Prodotto {
     private String description;
     private int price;
     private int quantity;
+    private String img;
 
     //METHODS
 
@@ -28,6 +29,7 @@ public class Prodotto {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
+                ", img="+ img +
                 '}';
     }
 
@@ -72,6 +74,13 @@ public class Prodotto {
         this.quantity = quantity;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     //GENERATED EQUALS AND HASHCODE
     @Override
@@ -96,6 +105,7 @@ public class Prodotto {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + price;
         result = 31 * result + quantity;
+        result = 31 * result + img.hashCode();
         return result;
     }
 }

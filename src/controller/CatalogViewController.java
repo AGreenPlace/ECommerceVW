@@ -1,7 +1,9 @@
 package controller;
 
 import model.Prodotto;
+import view.ProductDescriptor;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import java.util.List;
 //@WebServlet("/consultCatalog")
 @ManagedBean
 public class CatalogViewController extends HttpServlet{
+    @EJB
     private MainController mainController;
     private String catalogHTMLDescription;
 //    @Override
@@ -35,7 +38,8 @@ public class CatalogViewController extends HttpServlet{
             this.mainController = new MainController();
         }
         List<Prodotto> products = this.mainController.getProductsInCatalog();
-        return "catalogView";
+        this.generateHtmlFromProducts(products);
+        return "catalogView.jsp";
     }
 
     private String generateHtml(String inputData){
@@ -44,7 +48,17 @@ public class CatalogViewController extends HttpServlet{
         return output;
     }
 
-    private void generateHtmlFromProducts(List<Prodotto>){
+    private void generateHtmlFromProducts(List<Prodotto> products){
+        String output = "";
+        ProductDescriptor productDescriptor = new ProductDescriptor();
+        for (Prodotto current : products){
+            productDescriptor.setParameters(current.getName(),current.getImg(),current.getDescription());
+            output += productDescriptor.generateHtmlForCatalogView()+ "\n";
+        }
+        this.catalogHTMLDescription = output;
+    }
 
+    public String getCatalogHTMLDescription() {
+        return catalogHTMLDescription;
     }
 }

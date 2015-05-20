@@ -6,12 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core" %>
 <html>
   <head>
     <title></title>
   </head>
   <body>
-    <c:redirect url="/consultCatalog"/>
+  <f:view>
+    <h:commandButton action="#{catalogViewController.displayCatalog}" value="aaa"/>
+  </f:view>
+
   </body>
 </html>

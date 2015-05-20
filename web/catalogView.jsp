@@ -6,17 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsf/core" %>
 <html>
 <head>
     <title>Catalogo</title>
   <link href="css/css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  ${currentBodyContent}
-  <div id="container">
-    <img src="index.jsp">
-    <h2></h2>
-    <p></p>
-  </div>
+  ${catalogViewController.catalogHTMLDescription}
 </body>
 </html>

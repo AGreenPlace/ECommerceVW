@@ -23,7 +23,7 @@ public class ProductDescriptor {
                         "    <img src=\""+this.image+"\">\n" +
                         "<div class=\"textContainer\">\n"+
                         "    <h2>"+this.header+"</h2>\n" +
-                        "    <p></p>\n" +
+                        "    <p>"+this.body+"</p>\n" +
                         "</div>";
         return output;
     }
