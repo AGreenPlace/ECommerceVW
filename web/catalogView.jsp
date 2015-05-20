@@ -12,5 +12,10 @@
 </head>
 <body>
   ${currentBodyContent}
+  <div id="container">
+    <img src="index.jsp">
+    <h2></h2>
+    <p></p>
+  </div>
 </body>
 </html>

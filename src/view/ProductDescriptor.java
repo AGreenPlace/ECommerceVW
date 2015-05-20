@@ -1,6 +1,5 @@
 package view;
 
-import org.w3c.dom.html.HTMLElement;
 
 /**
  * Created by Andrea on 20/05/15.
@@ -13,7 +12,18 @@ public class ProductDescriptor {
     public ProductDescriptor() {
     }
 
-    public void setParameters(){
+    public void setParameters(String header, String image, String body){
+        this.header = header;
+        this.image = image;
+        this.body = body;
+    }
 
+    public String generateHtmlForCatalogView(){
+        String output = "<div id=\"container\">\n" +
+                        "    <img src=\""+this.image+"\">\n" +
+                        "    <h2>"+this.header+"</h2>\n" +
+                        "    <p></p>\n" +
+                        "</div>";
+        return output;
     }
 }
