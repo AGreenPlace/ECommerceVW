@@ -8,5 +8,12 @@ import org.w3c.dom.html.HTMLElement;
 public class ProductDescriptor {
     private String header;
     private String image;
-    private HTMLElement
+    private String body;
+
+    public ProductDescriptor() {
+    }
+
+    public void setParameters(){
+
+    }
 }
