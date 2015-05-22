@@ -39,7 +39,7 @@ public class CatalogViewController{
         }
         List<Prodotto> products = this.mainController.getProductsInCatalog();
         this.generateHtmlFromProducts(products);
-        return "catalogView.jsp";
+        return "catalogView";
     }
 
     private String generateHtml(String inputData){
