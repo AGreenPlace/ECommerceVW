@@ -3,15 +3,15 @@ package controller;
 import model.Prodotto;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import java.util.List;
 
 /**
  * Created by Andrea on 07/05/15.
  */
-@ManagedBean
+@Stateless
 public class MainController {
-    @EJB
     private DatabaseController databaseController;
 
     public MainController() {
@@ -24,5 +24,9 @@ public class MainController {
 
     public List<Prodotto> getProductsInCatalog(){
         return databaseController.getProductsInCatalog();
+    }
+
+    public Prodotto getProductFromCatalog(String id){
+        return databaseController.getProductFromCatalog(id);
     }
 }

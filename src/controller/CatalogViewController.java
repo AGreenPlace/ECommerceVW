@@ -5,6 +5,8 @@ import view.ProductDescriptor;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,33 +18,18 @@ import java.util.List;
 /**
  * Created by Andrea on 07/05/15.
  */
-//@WebServlet("/consultCatalog")
 @ManagedBean
 public class CatalogViewController{
     @EJB
     private MainController mainController;
     private List<Prodotto> products;
     private String catalogHTMLDescription;
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        if (req.getSession().getAttribute("mainController") == null){
-//            req.getSession().setAttribute("mainController",new MainController());
-//        }
-//        MainController mainController= (MainController)req.getSession().getAttribute("mainController");
-//        String catalogDescription = mainController.consultCatalog();
-//        req.getSession().setAttribute("currentBodyContent",this.generateHtml(catalogDescription));
-//        req.getServletContext().getRequestDispatcher(resp.encodeURL("/catalogView.jsp")).forward(req,resp);
-//    }
 
     public List<Prodotto> displayCatalog(){
-        if(this.mainController == null){
-            this.mainController = new MainController();
-        }
-        List<Prodotto> products = this.mainController.getProductsInCatalog();
+        List<Prodotto> products = mainController.getProductsInCatalog();
 
         this.generateHtmlFromProducts(products);
         return products;
-        //return "catalogView";*/
     }
 
     private String generateHtml(String inputData){

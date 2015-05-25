@@ -60,7 +60,7 @@ public class Catalogo {
     }
 
     //UTILITY METHODS
-    private Prodotto getProduct(String code){
+    public Prodotto getProduct(String code){
         return this.products.get(code);
     }
 }

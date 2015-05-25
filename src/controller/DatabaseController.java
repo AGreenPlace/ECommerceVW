@@ -26,4 +26,8 @@ public class DatabaseController {
     public String describeCatalog(){
         return catalog.getCatalogDescription();
     }
+
+    public Prodotto getProductFromCatalog(String id){
+        return this.catalog.getProduct(id);
+    }
 }
