@@ -12,9 +12,15 @@
 <h:body>
 <f:view>
      <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
-            <img src="${prodotto.img}" alt="web\images\noImage.jpeg"/>
+         <div id="container">
+             <div class="containerImg">
+         <img src="${prodotto.img}" alt="C:\Users\Luca\IdeaProjects\ECommerceVW\web\images\noImage.jpeg"/>
+                 </div>
+             <div class="textContainer">
             <p>Nome: ${prodotto.name}</p>
             <p>Disponibilità: ${prodotto.quantity}</p>
+         </div>
+         </div>
         </ui:repeat>
 </f:view>
 </h:body>
