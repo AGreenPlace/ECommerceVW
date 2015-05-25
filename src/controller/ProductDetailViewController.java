@@ -24,4 +24,7 @@ public class ProductDetailViewController {
         this.desc = "L'Id è: "+ this.currentProd.getCode();
         return desc;
     }
+    public Prodotto getCurrentProd(){
+        return this.currentProd;
+    }
 }

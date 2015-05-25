@@ -1,8 +1,15 @@
-.container {
-    display: inline;
-    height: 500px;
-    width: 500px;
-    background-color: red;
+
+/*START CATALOGO*/
+#container {
+    height: 400px;
+    width: 400px;
+    background-color: darkolivegreen;
+    border: 2px black;
+    border-radius: 10%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-bottom: 8px;
 }
 
 .textContainer {
@@ -25,10 +32,11 @@
     background-color: brown;
 }
 
-.container img{
-    width: 100px;
-    height: 100px;
+.immagineCatalogo {
+    width: 120px;
+    height: 120px;
     background-color: yellow;
     float: left;
 }
 
+/*END CATALOGO*/
