@@ -64,4 +64,5 @@ public class CatalogViewController{
     public String getCatalogHTMLDescription() {
         return catalogHTMLDescription;
     }
+
 }
