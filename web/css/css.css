@@ -6,12 +6,11 @@
 }
 
 .textContainer {
-    display: block;
+    display: inline-block;
     background-color: aqua;
     width: 250px;
     height: 250px;
     float: left;
-
 }
 
 .textContainer h2{

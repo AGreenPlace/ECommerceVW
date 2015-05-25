@@ -19,12 +19,14 @@ public class ProductDescriptor {
     }
 
     public String generateHtmlForCatalogView(){
-        String output = "<div class=\"container\">\n" +
-                        "    <img src=\""+this.image+"\">\n" +
-                        "<div class=\"textContainer\">\n"+
-                        "    <h2>"+this.header+"</h2>\n" +
+        String output = "<div id=\"container\">\n" +
+                        "  <div class=\"containerImg\">  <img src=\""+this.image+"\"></div>\n" +
+                        "<div class=\"containerText\">\n"+
+                        "    <p>"+this.header+"</p>\n" +
                         "    <p>"+this.body+"</p>\n" +
+                        "</div>\n" +
                         "</div>";
+
         return output;
     }
 }
