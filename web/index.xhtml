@@ -6,15 +6,16 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
 <f:view>
-        <!--<h:commandButton action="#{catalogViewController.displayCatalog()}" value="ac"/>-->
-        <ui:repeat value="${catalogViewController.displayCatalog}" var="prodotto" >
-            <ui:composition>
-            <img src="${prodotto.img}" alt="web\images\noImage.jpeg">cazzo</img>
-            <p>Nome: #{prodotto.name}</p>
-            <p>Disponibilità: ${prodotto.quantity}</p>
-            </ui:composition>
-        </ui:repeat>
 
+        <!--<h:commandButton action="#{catalogViewController.displayCatalog()}" value="ac"/>-->
+        <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
+            <!--<h:outputText value="${catalogViewController.catalogHTMLDescription}" escape="false"/>-->
+            <img src="${prodotto.img}" alt="web\images\noImage.jpeg">cazzo</img>
+            <p>Nome: ${prodotto.name}</p>
+            <p>Disponibilità: ${prodotto.quantity}</p>
+        </ui:repeat>
 </f:view>
+</h:body>
 </html>

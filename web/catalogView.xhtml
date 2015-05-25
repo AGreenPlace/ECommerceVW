@@ -11,12 +11,13 @@
 </head>
 <h:body>
     <f:view>
-        <ui:repeat value="#{catalogViewController.displayCatalog}" var="prodotto" >
-            <img src="#{prodotto.img}" alt="web\images\noImage.jpeg"></img>
-            <p>Nome: #{prodotto.name}</p>
-            <p>Disponibilità: #{prodotto.quantity}</p>
-                </ui:repeat>
-        <!--<h:outputText value="${catalogViewController.catalogHTMLDescription}" escape="false"/>-->
+        <!--<ui:repeat value="#{catalogViewController.displayCatalog}" var="prodotto" >-->
+            <!--<img src="${prodotto.img}" alt="web\images\noImage.jpeg">aa</img>-->
+            <!--<p>Nome: ${prodotto.name}</p>-->
+            <!--<p>Disponibilità: ${prodotto.quantity}</p>-->
+        <!--</ui:repeat>-->
+            <h:outputText value="${catalogViewController.catalogHTMLDescription}" escape="false"/>
+
     </f:view>
 </h:body>
 </html>

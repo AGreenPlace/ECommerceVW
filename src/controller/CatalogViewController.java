@@ -22,7 +22,7 @@ public class CatalogViewController{
     @EJB
     private MainController mainController;
     private List<Prodotto> products;
- /*   private String catalogHTMLDescription;*/
+    private String catalogHTMLDescription;
 //    @Override
 //    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        if (req.getSession().getAttribute("mainController") == null){
@@ -39,13 +39,13 @@ public class CatalogViewController{
             this.mainController = new MainController();
         }
         List<Prodotto> products = this.mainController.getProductsInCatalog();
-        return products;
-        /*this.generateHtmlFromProducts(products);
 
-        return "catalogView";*/
+        this.generateHtmlFromProducts(products);
+        return products;
+        //return "catalogView";*/
     }
 
-/*    private String generateHtml(String inputData){
+    private String generateHtml(String inputData){
         String output = "<h1>Catalogo</h1>" +"\n"+
                 inputData;
         return output;
@@ -63,5 +63,5 @@ public class CatalogViewController{
 
     public String getCatalogHTMLDescription() {
         return catalogHTMLDescription;
-    }*/
+    }
 }
