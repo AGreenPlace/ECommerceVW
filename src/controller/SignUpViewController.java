@@ -1,23 +1,32 @@
-package model;
+package controller;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 
 /**
  * Created by Andrea on 27/05/15.
  */
-public class Utente {
+@ManagedBean
+public class SignUpViewController {
+    @EJB
+    MainController mainController;
     private String nome;
     private String cognome;
-    private String username;
-    private String password;
     private String email;
+    private String password;
+    private String username;
     private String nation;
     private String city;
     private String cap;
     private String location;
 
-    public Utente(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public String signUp(){
+        Boolean signUpSucceded = mainController.signUp(nome, cognome, email, password, username,nation,city,cap,location);
+        if (signUpSucceded)
+            return "index.xhtml";
+        else return "SignUpView.xhtml";
     }
+
 
     public String getNome() {
         return nome;
@@ -35,12 +44,12 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -51,12 +60,12 @@ public class Utente {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getNation() {
@@ -89,31 +98,5 @@ public class Utente {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public Boolean verifyPassword(String password) throws InvalidPasswordException{
-        if(!password.equals(this.password)){
-            throw new InvalidPasswordException("Password is not valid");
-        }
-        else{
-            return true;
-        }
-
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Utente utente = (Utente) o;
-
-        return email.equals(utente.email);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return email.hashCode();
     }
 }

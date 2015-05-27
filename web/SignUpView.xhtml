@@ -19,16 +19,16 @@
 <h:body>
 <f:view>
     <h:form>
-        <p>Mail</p><h:inputText class="form-control" value="#{signuUpViewController.email}"/>
-        <p>Username</p><h:inputText class="form-control" value="#{signuUpViewController.username}"/>
-        <p>Password</p><h:inputSecret class="form-control" value="#{signuUpViewController.password}"/>
-        <p>Name</p><h:inputText class="form-control" value="#{signuUpViewController.name}"/>
-        <p>Lastname</p><h:inputText class="form-control" value="#{signuUpViewController.lastname}"/>
-        <p>Nation</p><h:inputText class="form-control" value="#{signuUpViewController.nation}"/>
-        <p>City</p><h:inputText class="form-control" value="#{signuUpViewController.city}"/>
-        <p>CAP</p><h:inputText class="form-control" value="#{signuUpViewController.cap}"/>
-        <p>Address</p><h:inputText class="form-control" value="#{signuUpViewController.location}"/>
-        <h:commandButton value="Sign Up" action="${signUpViewController.addUtente}"/>
+        <p>Mail</p><h:inputText class="form-control" value="#{signUpViewController.email}"/>
+        <p>Username</p><h:inputText class="form-control" value="#{signUpViewController.username}"/>
+        <p>Password</p><h:inputSecret class="form-control" value="#{signUpViewController.password}"/>
+        <p>Name</p><h:inputText class="form-control" value="#{signUpViewController.nome}"/>
+        <p>Lastname</p><h:inputText class="form-control" value="#{signUpViewController.cognome}"/>
+        <p>Nation</p><h:inputText class="form-control" value="#{signUpViewController.nation}"/>
+        <p>City</p><h:inputText class="form-control" value="#{signUpViewController.city}"/>
+        <p>CAP</p><h:inputText class="form-control" value="#{signUpViewController.cap}"/>
+        <p>Address</p><h:inputText class="form-control" value="#{signUpViewController.location}"/>
+        <h:commandButton value="Sign Up" action="${signUpViewController.signUp()}"/>
     </h:form>
 </f:view>
 </h:body>

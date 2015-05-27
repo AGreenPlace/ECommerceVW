@@ -50,6 +50,22 @@ public class MainController {
     }
 
 
+    public Boolean signUp(String nome,String cognome,String email,String password,String username,String nation,String city,String cap,String location){
+        Utente user = databaseController.checkUser(email);
+        if(user!=null)
+            return false;
+        else {
+            Boolean userWasCreated = false;
+            try {
+                userWasCreated = databaseController.createUser(nome,cognome,email,password,username,nation,city,cap,location);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            return userWasCreated;
+        }
+    }
+
+
     public Utente getCurrentUser() {
         return currentUser;
     }
