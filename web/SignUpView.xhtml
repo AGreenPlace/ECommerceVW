@@ -19,16 +19,23 @@
 <h:body>
 <f:view>
     <h:form>
-        <p>Mail</p><h:inputText class="form-control" value="#{signUpViewController.email}"/>
-        <p>Username</p><h:inputText class="form-control" value="#{signUpViewController.username}"/>
-        <p>Password</p><h:inputSecret class="form-control" value="#{signUpViewController.password}"/>
-        <p>Name</p><h:inputText class="form-control" value="#{signUpViewController.nome}"/>
-        <p>Lastname</p><h:inputText class="form-control" value="#{signUpViewController.cognome}"/>
-        <p>Nation</p><h:inputText class="form-control" value="#{signUpViewController.nation}"/>
-        <p>City</p><h:inputText class="form-control" value="#{signUpViewController.city}"/>
-        <p>CAP</p><h:inputText class="form-control" value="#{signUpViewController.cap}"/>
-        <p>Address</p><h:inputText class="form-control" value="#{signUpViewController.location}"/>
-        <h:commandButton value="Sign Up" action="${signUpViewController.signUp()}"/>
+        <div class = "row">
+            <div class = "col-md-4 col-md-offset-1">
+                <p>Name</p><h:inputText class="form-control" value="#{signUpViewController.name}"/>
+                <p>Mail</p><h:inputText class="form-control" value="#{signUpViewController.email}"/>
+                <p>Username</p><h:inputText class="form-control" value="#{signUpViewController.username}"/>
+                <p>Nation</p><h:inputText class="form-control" value="#{signUpViewController.nation}"/>
+                <p>CAP</p><h:inputText class="form-control" value="#{signUpViewController.cap}"/>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <p>Lastname</p><h:inputText class="form-control" value="#{signUpViewController.lastname}"/>
+                <p>Password</p><h:inputSecret class="form-control" value="#{signUpViewController.password}"/>
+                <p>Address</p><h:inputText class="form-control" value="#{signUpViewController.location}"/>
+                <p>City</p><h:inputText class="form-control" value="#{signUpViewController.city}"/>
+            </div>
+        </div>
+
+        <h:commandButton value="Sign Up" action="${signUpViewController.addUtente}"/>
     </h:form>
 </f:view>
 </h:body>

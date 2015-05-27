@@ -27,6 +27,7 @@ public class Catalogo {
         Prodotto temp2 = new Prodotto();
         temp2.setCode("2");
         temp2.setName("Cestello");
+        temp2.setPrice(100000000);
         Prodotto temp3 = new Prodotto();
         temp3.setCode("1");
         temp3.setName("Ombrello");
