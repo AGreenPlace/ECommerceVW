@@ -7,15 +7,15 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <body>
 <f:view>
-
+    <h:form>
+        <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('ProductDetailView.xhtml')}"/>
+    </h:form>
     <h:outputLabel value="${productDetailViewController.currentProd.code}"/>
     <h2>Nome: ${productDetailViewController.currentProd.name} </h2>
     <p>Descrizione: ${productDetailViewController.currentProd.description}</p>
     <p>Code: ${productDetailViewController.currentProd.code}</p>
     <p>Quantity: ${productDetailViewController.currentProd.quantity}</p>
     <p>Price: ${productDetailViewController.currentProd.price}</p>
-
-
 </f:view>
 </body>
 </html>

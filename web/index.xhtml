@@ -16,6 +16,9 @@
         <h:form>
         <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
         </h:form>
+        <h:form>
+            <h:commandButton value="Sign Up" action="#{signUpViewController.setPreviousPagePath('index.xhtml')}"/>
+        </h:form>
      <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
          <h:form>
          <h:commandLink action="#{productDetailViewController.initWithId(prodotto.code)}">

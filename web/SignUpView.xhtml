@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <!-- BOOTSTRAP START-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
+    <!-- BOOTSTRAP END-->
+
+    <link rel="stylesheet" type="text/css" href="css/signup.css"/>
+</head>
+<h:body>
+<f:view>
+    <h:form>
+        <p>Mail</p><h:inputText class="form-control" value="#{signuUpViewController.email}"/>
+        <p>Username</p><h:inputText class="form-control" value="#{signuUpViewController.username}"/>
+        <p>Password</p><h:inputSecret class="form-control" value="#{signuUpViewController.password}"/>
+        <p>Name</p><h:inputText class="form-control" value="#{signuUpViewController.name}"/>
+        <p>Lastname</p><h:inputText class="form-control" value="#{signuUpViewController.lastname}"/>
+        <p>Nation</p><h:inputText class="form-control" value="#{signuUpViewController.nation}"/>
+        <p>City</p><h:inputText class="form-control" value="#{signuUpViewController.city}"/>
+        <p>CAP</p><h:inputText class="form-control" value="#{signuUpViewController.cap}"/>
+        <p>Address</p><h:inputText class="form-control" value="#{signuUpViewController.location}"/>
+        <h:commandButton value="Sign Up" action="${signUpViewController.addUtente}"/>
+    </h:form>
+</f:view>
+</h:body>
+</html>
