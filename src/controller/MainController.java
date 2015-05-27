@@ -1,6 +1,9 @@
 package controller;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import model.InvalidPasswordException;
 import model.Prodotto;
+import model.Utente;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -13,6 +16,7 @@ import java.util.List;
 @Stateless
 public class MainController {
     private DatabaseController databaseController;
+    private Utente currentUser;
 
     public MainController() {
         this.databaseController = new DatabaseController();
@@ -28,5 +32,24 @@ public class MainController {
 
     public Prodotto getProductFromCatalog(String id){
         return databaseController.getProductFromCatalog(id);
+    }
+
+    public Boolean login(String email, String password){
+        Utente currentUser = databaseController.checkUser(email);
+        if (currentUser == null){
+            return false;
+        }
+        Boolean passIsCorrect;
+        try {
+            passIsCorrect = currentUser.verifyPassword(password);
+        }catch (InvalidPasswordException e){
+            System.out.println(e.toString());
+            passIsCorrect = false;
+        }
+        if (passIsCorrect){
+            this.currentUser = currentUser;
+            return true;
+        }
+        else return false;
     }
 }
