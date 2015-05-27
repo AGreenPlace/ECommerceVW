@@ -16,6 +16,7 @@ import java.util.Map;
 @ManagedBean
 public class DatabaseController {
     @EJB
+
     private Catalogo catalog;
     private Map<String,Utente> utenti;
 

@@ -15,12 +15,8 @@ import java.util.List;
  */
 @Stateless
 public class MainController {
-    private DatabaseController databaseController;
+    private DatabaseController databaseController = new DatabaseController();
     private Utente currentUser;
-
-    public MainController() {
-        this.databaseController = new DatabaseController();
-    }
 
     public String consultCatalog(){
         return databaseController.describeCatalog();
@@ -51,5 +47,14 @@ public class MainController {
             return true;
         }
         else return false;
+    }
+
+
+    public Utente getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(Utente currentUser) {
+        this.currentUser = currentUser;
     }
 }

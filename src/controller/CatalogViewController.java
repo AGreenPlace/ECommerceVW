@@ -52,4 +52,7 @@ public class CatalogViewController{
         return catalogHTMLDescription;
     }
 
+    public MainController getMainController() {
+        return mainController;
+    }
 }

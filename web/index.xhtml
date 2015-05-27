@@ -11,6 +11,8 @@
 </head>
 <h:body>
     <f:view>
+
+        <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
         <h:form>
         <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
         </h:form>
