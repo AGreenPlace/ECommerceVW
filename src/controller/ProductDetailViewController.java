@@ -27,4 +27,5 @@ public class ProductDetailViewController {
     public Prodotto getCurrentProd(){
         return this.currentProd;
     }
+
 }

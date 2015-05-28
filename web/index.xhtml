@@ -21,17 +21,20 @@
         </h:form>
      <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
          <h:form>
-         <h:commandLink action="#{productDetailViewController.initWithId(prodotto.code)}">
+
              <div id="container">
                  <div class="containerImg">
                     <img src="${prodotto.img}" alt="C:\Users\Luca\IdeaProjects\ECommerceVW\web\images\noImage.jpeg"/>
                  </div>
                      <div class="textContainer">
-                    <p>Nome: ${prodotto.name}</p>
-                    <p>Disponibilità: ${prodotto.quantity}</p>
+                         <h:commandLink action="#{productDetailViewController.initWithId(prodotto.code)}">
+                         <p>Nome: ${prodotto.name}</p>
+                         <p>Disponibilità: ${prodotto.quantity}</p>
+                         </h:commandLink>
+
                  </div>
              </div>
-         </h:commandLink>
+
          </h:form>
         </ui:repeat>
     </f:view>

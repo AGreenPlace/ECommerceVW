@@ -27,7 +27,8 @@
                         <h:inputText styleClass="form-control" id="emailField" value="#{loginViewController.username}"/>
                     </div>
                     <div class="form-group">
-                        <h:inputSecret styleClass="form-control" value="#{loginViewController.password}"/>
+                        <label for="passwordField">Password</label>
+                        <h:inputSecret styleClass="form-control" id="passwordField" value="#{loginViewController.password}"/>
                     </div>
                     <h:commandButton value="Login" action="#{loginViewController.authenticate()}"/>
                 </h:form>

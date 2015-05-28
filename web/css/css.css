@@ -1,9 +1,13 @@
 
 /*START CATALOGO*/
+body{
+    background-color: #03396c;
+}
+
 #container {
     height: 400px;
     width: 400px;
-    background-color: darkolivegreen;
+    background-color: #011f4b;
     border: 2px black;
     border-radius: 10%;
     border-style: solid;
@@ -23,13 +27,13 @@
 .textContainer h2{
     width: 100px;
     height: 100px;
-    background-color: blue;
+    background-color: #6497b1;
 }
 
 .textContainer p{
     width: 100px;
     height: 100px;
-    background-color: brown;
+    background-color: #6497b1;
 }
 
 .immagineCatalogo {

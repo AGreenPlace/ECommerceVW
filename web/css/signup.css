@@ -2,13 +2,13 @@ body{
     background-color: #03396c;
 }
 
-.form-control{
+/*.form-control{
     width: auto;
-/*    margin-left: auto;
+/!*    margin-left: auto;
     margin-right: auto;
-    vertical-align: middle;*/
+    vertical-align: middle;*!/
 
-}
+}*/
 
 p {
     color: white;

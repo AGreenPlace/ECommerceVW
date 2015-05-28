@@ -18,6 +18,8 @@ public class DatabaseController {
     private Catalogo catalog;
     private Map<String,Utente> utenti;
 
+    private ProductDetailViewController currentProductController;
+
     public DatabaseController() {
         this.catalog = new Catalogo();
         this.utenti = new HashMap<>();
@@ -72,6 +74,16 @@ public class DatabaseController {
         nuovoUtente.setLocation(location);
         this.utenti.put(nuovoUtente.getEmail(),nuovoUtente);
         return true;
+    }
+
+
+
+    public ProductDetailViewController getcurrentProductController() {
+        return currentProductController;
+    }
+
+    public void setcurrentProductController(ProductDetailViewController currentProductController) {
+        this.currentProductController = currentProductController;
     }
 
 }

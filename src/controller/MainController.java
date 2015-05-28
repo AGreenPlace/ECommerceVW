@@ -17,6 +17,8 @@ import java.util.List;
 public class MainController {
     private DatabaseController databaseController = new DatabaseController();
     private Utente currentUser;
+    private Prodotto currentProduct;
+
 
     public String consultCatalog(){
         return databaseController.describeCatalog();
@@ -26,8 +28,18 @@ public class MainController {
         return databaseController.getProductsInCatalog();
     }
 
+    public Prodotto getCurrentProduct() {
+        return currentProduct;
+    }
+
+    public void setCurrentProduct(Prodotto currentProduct) {
+        this.currentProduct = currentProduct;
+    }
+
     public Prodotto getProductFromCatalog(String id){
-        return databaseController.getProductFromCatalog(id);
+        this.currentProduct=databaseController.getProductFromCatalog(id);
+        return currentProduct;
+
     }
 
     public Boolean login(String email, String password){
@@ -72,5 +84,22 @@ public class MainController {
 
     public void setCurrentUser(Utente currentUser) {
         this.currentUser = currentUser;
+    }
+
+
+    public Boolean selectQuantity(Integer quantity) {
+
+        if(this.currentProduct.getQuantity()==0)
+            return false;
+        else if (this.currentProduct.getQuantity()<quantity)
+            return false;
+        else{
+
+            this.currentProduct.setQuantity(this.currentProduct.getQuantity()-quantity);
+            return true;
+        }
+
+
+
     }
 }

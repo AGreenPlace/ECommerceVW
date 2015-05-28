@@ -16,6 +16,10 @@
     <p>Code: ${productDetailViewController.currentProd.code}</p>
     <p>Quantity: ${productDetailViewController.currentProd.quantity}</p>
     <p>Price: ${productDetailViewController.currentProd.price}</p>
+    <h:form>
+    <h:commandButton value="Select Quantity" action="#{cartViewController.insertQuantity()}"/>
+
+    </h:form>
 </f:view>
 </body>
 </html>
