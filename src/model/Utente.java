@@ -15,8 +15,8 @@ public class Utente {
     private String city;
     private String cap;
     private String location;
-    private Ordine ordineCorrente;
-    private List<Ordine> ordini;
+    private Ordine currentOrder;
+    private List<Ordine> orderHistory;
 
     public Utente(String email, String password) {
         this.email = email;
@@ -95,20 +95,20 @@ public class Utente {
         this.location = location;
     }
 
-    public Ordine getOrdineCorrente() {
-        return ordineCorrente;
+    public Ordine getCurrentOrder() {
+        return currentOrder;
     }
 
-    public void setOrdineCorrente(Ordine ordineCorrente) {
-        this.ordineCorrente = ordineCorrente;
+    public void setCurrentOrder(Ordine currentOrder) {
+        this.currentOrder = currentOrder;
     }
 
-    public List<Ordine> getOrdini() {
-        return ordini;
+    public List<Ordine> getOrderHistory() {
+        return orderHistory;
     }
 
-    public void setOrdini(List<Ordine> ordini) {
-        this.ordini = ordini;
+    public void setOrderHistory(List<Ordine> orderHistory) {
+        this.orderHistory = orderHistory;
     }
 
     public Boolean verifyPassword(String password) throws InvalidPasswordException{
@@ -118,6 +118,13 @@ public class Utente {
         else{
             return true;
         }
+    }
+
+    public Boolean addProductToOrder(Prodotto prodotto, Integer quantity){
+        if(this.currentOrder== null)
+            this.currentOrder = new Ordine();
+        Boolean productAdded = this.currentOrder.addProduct(prodotto, quantity);
+        return productAdded;
 
     }
 
