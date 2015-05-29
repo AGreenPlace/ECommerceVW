@@ -23,7 +23,7 @@ public class Catalogo {
         temp1.setCode("1");
         temp1.setName("Ombrello");
         temp1.setDescription("Un fottuto Ombrello");
-        temp1.setQuantity(1);
+        temp1.setQuantity(8);
         Prodotto temp2 = new Prodotto();
         temp2.setCode("2");
         temp2.setName("Cestello");

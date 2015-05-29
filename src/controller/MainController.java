@@ -87,19 +87,9 @@ public class MainController {
     }
 
 
-    public Boolean selectQuantity(Integer quantity) {
 
-        if(this.currentProduct.getQuantity()==0)
-            return false;
-        else if (this.currentProduct.getQuantity()<quantity)
-            return false;
-        else{
-
-            this.currentProduct.setQuantity(this.currentProduct.getQuantity()-quantity);
-            return true;
-        }
 
 
 
     }
-}
+

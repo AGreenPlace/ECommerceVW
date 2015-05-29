@@ -1,8 +1,6 @@
 package controller;
 
-import model.Catalogo;
-import model.Prodotto;
-import model.Utente;
+import model.*;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -18,7 +16,7 @@ public class DatabaseController {
     private Catalogo catalog;
     private Map<String,Utente> utenti;
 
-    private ProductDetailViewController currentProductController;
+
 
     public DatabaseController() {
         this.catalog = new Catalogo();
@@ -27,6 +25,7 @@ public class DatabaseController {
         Utente u2 = new Utente("andrea@andrea.com","andrea");
         this.utenti.put(u1.getEmail(),u1);
         this.utenti.put(u2.getEmail(),u2);
+
     }
 
     public List<Prodotto> getProductsInCatalog(){
@@ -76,14 +75,5 @@ public class DatabaseController {
         return true;
     }
 
-
-
-    public ProductDetailViewController getcurrentProductController() {
-        return currentProductController;
-    }
-
-    public void setcurrentProductController(ProductDetailViewController currentProductController) {
-        this.currentProductController = currentProductController;
-    }
 
 }

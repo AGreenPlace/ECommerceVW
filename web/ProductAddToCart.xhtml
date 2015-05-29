@@ -13,7 +13,7 @@
         <h2>Nome: ${cartViewController.currentProduct.name} </h2>
         <p>Descrizione: ${cartViewController.currentProduct.description}</p>
         <p>Code: ${cartViewController.currentProduct.code}</p>
-        <h:inputText action="#{cartViewController.quantity}"/>
+        <h:inputText value="#{cartViewController.quantity}"/>
         <p>Price: ${cartViewController.currentProduct.price}</p>
         <h:commandButton value="Add to Cart" action="#{cartViewController.addToCart}"/>
     </h:form>

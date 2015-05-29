@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  * Created by Andrea on 27/05/15.
  */
@@ -13,6 +15,8 @@ public class Utente {
     private String city;
     private String cap;
     private String location;
+    private Ordine currentOrder;
+    private List<Ordine> orderHistory;
 
     public Utente(String email, String password) {
         this.email = email;
@@ -91,6 +95,22 @@ public class Utente {
         this.location = location;
     }
 
+    public Ordine getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public void setCurrentOrder(Ordine currentOrder) {
+        this.currentOrder = currentOrder;
+    }
+
+    public List<Ordine> getOrderHistory() {
+        return orderHistory;
+    }
+
+    public void setOrderHistory(List<Ordine> orderHistory) {
+        this.orderHistory = orderHistory;
+    }
+
     public Boolean verifyPassword(String password) throws InvalidPasswordException{
         if(!password.equals(this.password)){
             throw new InvalidPasswordException("Password is not valid");
@@ -98,7 +118,13 @@ public class Utente {
         else{
             return true;
         }
+    }
 
+    public Boolean addProductToOrder(Prodotto prodotto, Integer quantity){
+        if(this.currentOrder== null)
+            this.currentOrder = new Ordine();
+        Boolean productAdded = this.currentOrder.addProduct(prodotto, quantity);
+        return productAdded;
     }
 
     @Override
