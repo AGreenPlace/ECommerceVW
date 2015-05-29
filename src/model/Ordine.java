@@ -20,5 +20,6 @@ public class Ordine {
         RigaOrdine rigaOrdine = new RigaOrdine(prodotto, quantity);
         righeordine.add(rigaOrdine);
         return true;
+
     }
 }

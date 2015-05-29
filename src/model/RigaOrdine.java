@@ -15,6 +15,7 @@ public class RigaOrdine {
         this();
         this.setCurrentProduct(prodotto);
         this.setQuantity(quantity);
+
     }
 
 
