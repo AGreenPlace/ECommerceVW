@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -120,12 +121,22 @@ public class Utente {
         }
     }
 
-    public Boolean addProductToOrder(Prodotto prodotto, Integer quantity){
+    public Ordine addProductToOrder(Prodotto prodotto, Integer quantity){
         if(this.currentOrder== null)
             this.currentOrder = new Ordine();
         Boolean productAdded = this.currentOrder.addProduct(prodotto, quantity);
-        return productAdded;
+        if (productAdded)
+            return this.currentOrder;
+        return null;
 
+    }
+
+    public Ordine closeOrder() {
+        if (this.orderHistory == null)
+            this.orderHistory = new LinkedList<>();
+        Boolean addedToHistory = this.orderHistory.add(this.currentOrder);
+        this.currentOrder = null;
+        return this.orderHistory.get(this.orderHistory.size()-1);
     }
 
     @Override
@@ -139,8 +150,12 @@ public class Utente {
 
     }
 
+
+
     @Override
     public int hashCode() {
         return email.hashCode();
     }
+
+
 }

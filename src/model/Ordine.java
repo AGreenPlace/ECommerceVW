@@ -18,7 +18,7 @@ public class Ordine {
 
     public Boolean addProduct(Prodotto prodotto, Integer quantity) {
         RigaOrdine rigaOrdine = new RigaOrdine(prodotto, quantity);
-        righeordine.add(rigaOrdine);
+        this.righeordine.add(rigaOrdine);
         return true;
 
     }

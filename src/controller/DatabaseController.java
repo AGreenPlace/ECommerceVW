@@ -5,6 +5,7 @@ import model.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,12 +16,14 @@ import java.util.Map;
 public class DatabaseController {
     private Catalogo catalog;
     private Map<String,Utente> utenti;
+    private List<Ordine> orders;
 
 
 
     public DatabaseController() {
         this.catalog = new Catalogo();
         this.utenti = new HashMap<>();
+        this.orders = new LinkedList<>();
         Utente u1 = new Utente("luca@luca.com","luca");
         Utente u2 = new Utente("andrea@andrea.com","andrea");
         this.utenti.put(u1.getEmail(),u1);
@@ -76,4 +79,7 @@ public class DatabaseController {
     }
 
 
+    public Boolean addOrderToHandle(Ordine toBeHandled) {
+        return this.orders.add(toBeHandled);
+    }
 }

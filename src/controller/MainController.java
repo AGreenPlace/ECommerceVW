@@ -2,6 +2,7 @@ package controller;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import model.InvalidPasswordException;
+import model.Ordine;
 import model.Prodotto;
 import model.Utente;
 
@@ -19,6 +20,10 @@ public class MainController {
     private Utente currentUser;
     private Prodotto currentProduct;
 
+
+    public Ordine addProductToOrder(Prodotto prodotto, Integer quantity){
+        return currentUser.addProductToOrder(prodotto, quantity);
+    }
 
     public String consultCatalog(){
         return databaseController.describeCatalog();
@@ -75,6 +80,14 @@ public class MainController {
             }
             return userWasCreated;
         }
+    }
+
+
+    public Boolean closeOrder(){
+        Ordine closedOrder = this.currentUser.closeOrder();
+        if (closedOrder != null)
+            this.databaseController.addOrderToHandle(closedOrder);
+        return closedOrder!=null;
     }
 
 

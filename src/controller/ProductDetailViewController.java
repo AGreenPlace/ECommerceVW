@@ -1,6 +1,7 @@
 package controller;
 
 import model.Prodotto;
+import sun.jvm.hotspot.ui.tree.BadOopTreeNodeAdapter;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -14,6 +15,7 @@ public class ProductDetailViewController {
     private MainController mainController;
     private Prodotto currentProd;
     private String desc;
+    private Integer quantity;
 
     public String initWithId(String id){
         this.currentProd = this.mainController.getProductFromCatalog(id);
@@ -28,4 +30,11 @@ public class ProductDetailViewController {
         return this.currentProd;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }
