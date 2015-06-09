@@ -1,7 +1,6 @@
 package model;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Andrea on 27/05/15.
@@ -17,7 +16,7 @@ public class Utente {
     private String cap;
     private String location;
     private Ordine currentOrder;
-    private List<Ordine> orderHistory;
+    private Map<Long,Ordine> orderHistory;
 
     public Utente(String email, String password) {
         this.email = email;
@@ -104,11 +103,11 @@ public class Utente {
         this.currentOrder = currentOrder;
     }
 
-    public List<Ordine> getOrderHistory() {
-        return orderHistory;
+    public Map<Long,Ordine> getOrderHistory() {
+        return this.orderHistory;
     }
 
-    public void setOrderHistory(List<Ordine> orderHistory) {
+    public void setOrderHistory(Map<Long, Ordine> orderHistory) {
         this.orderHistory = orderHistory;
     }
 
@@ -133,10 +132,11 @@ public class Utente {
 
     public Ordine closeOrder() {
         if (this.orderHistory == null)
-            this.orderHistory = new LinkedList<>();
-        Boolean addedToHistory = this.orderHistory.add(this.currentOrder);
-        this.currentOrder = null;
-        return this.orderHistory.get(this.orderHistory.size()-1);
+            this.orderHistory = new HashMap<>();
+        this.orderHistory.put(this.currentOrder.getId(),this.currentOrder);
+        Ordine output= this.orderHistory.get(this.currentOrder.getId());
+        this.currentOrder= null;
+        return output;
     }
 
     @Override

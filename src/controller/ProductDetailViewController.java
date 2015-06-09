@@ -1,7 +1,7 @@
 package controller;
 
 import model.Prodotto;
-import sun.jvm.hotspot.ui.tree.BadOopTreeNodeAdapter;
+
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;

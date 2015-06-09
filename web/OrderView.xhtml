@@ -11,5 +11,8 @@
             <h:outputText value="${rigaOrdine.quantity}"/>
         </p>
     </ui:repeat>
+    <h:form>
+        <h:commandButton value="Close Order" action="#{orderViewController.closeOrder}"/>
+    </h:form>
 </f:view>
 </html>

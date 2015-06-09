@@ -9,7 +9,10 @@ import model.Utente;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.criteria.Order;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Andrea on 07/05/15.
@@ -90,6 +93,10 @@ public class MainController {
         return closedOrder!=null;
     }
 
+    public Map<Long,Ordine> displayOrders(){
+        return this.currentUser.getOrderHistory();
+    }
+
 
     public Utente getCurrentUser() {
         return currentUser;
@@ -100,9 +107,8 @@ public class MainController {
     }
 
 
-
-
-
-
+    public Ordine getCurrentOrderFromHistory(Long id) {
+        return this.currentUser.getOrderHistory().get(id);
     }
+}
 
