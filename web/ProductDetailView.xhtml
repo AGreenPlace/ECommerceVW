@@ -16,9 +16,12 @@
     <p>Code: ${productDetailViewController.currentProd.code}</p>
     <p>Quantity: ${productDetailViewController.currentProd.quantity}</p>
     <p>Price: ${productDetailViewController.currentProd.price}</p>
-    <h:inputText value="#{productDetailViewController.quantity}"/>
     <h:form>
-    <h:commandButton value="Add to Cart" action="#{orderViewController.addProductToOrder(productDetailViewController.currentProd,productDetailViewController.quantity)}"/>
+        <h:inputText value="#{orderViewController.quantity}"/>
+        <h:commandButton value="Add to Cart" action="#{orderViewController.addProductToOrder()}">
+            <f:param name="codiceProdottoDaAggiungere" value="${productDetailViewController.currentProd.code}"/>
+            <!--<f:param name="quantity" value="${productDetailViewController.quantity}"/>-->
+        </h:commandButton>
 
     </h:form>
 </f:view>

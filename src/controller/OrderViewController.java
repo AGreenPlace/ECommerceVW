@@ -5,6 +5,7 @@ import model.Prodotto;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 /**
  * Created by Andrea on 29/05/15.
@@ -14,6 +15,9 @@ public class OrderViewController {
     @EJB
     MainController mainController;
     Ordine currentOrder;
+    @ManagedProperty(value = "#{param.codiceProdottoDaAggiungere}")
+    String codiceProdottoDaAggiungere;
+    String quantity;
 
     public String closeOrder(){
         String output;
@@ -25,16 +29,9 @@ public class OrderViewController {
         return output;
     }
 
-    public Ordine getCurrentOrder() {
-        return currentOrder;
-    }
-
-    public void setCurrentOrder(Ordine currentOrder) {
-        this.currentOrder = currentOrder;
-    }
-
-    public String addProductToOrder(Prodotto currentProd, Integer quantity){
-        this.currentOrder = this.mainController.addProductToOrder(currentProd,quantity);
+    public String addProductToOrder(){
+        Prodotto prodottoDaAggiungere = this.mainController.getProductFromCatalog(this.codiceProdottoDaAggiungere);
+        this.currentOrder = this.mainController.addProductToOrder(prodottoDaAggiungere,new Integer(this.quantity));
         String output;
         if (this.currentOrder != null){
             output = "OrderView.xhtml";
@@ -43,5 +40,30 @@ public class OrderViewController {
             output = null;
         }
         return output;
+    }
+
+
+    public Ordine getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public void setCurrentOrder(Ordine currentOrder) {
+        this.currentOrder = currentOrder;
+    }
+
+    public String getCodiceProdottoDaAggiungere() {
+        return codiceProdottoDaAggiungere;
+    }
+
+    public void setCodiceProdottoDaAggiungere(String codiceProdottoDaAggiungere) {
+        this.codiceProdottoDaAggiungere = codiceProdottoDaAggiungere;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 }

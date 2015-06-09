@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,6 +18,8 @@ public class Ordine {
     }
 
     public Boolean addProduct(Prodotto prodotto, Integer quantity) {
+        if (this.righeordine == null)
+            this.righeordine = new LinkedList<>();
         RigaOrdine rigaOrdine = new RigaOrdine(prodotto, quantity);
         this.righeordine.add(rigaOrdine);
         return true;

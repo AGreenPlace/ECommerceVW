@@ -5,7 +5,7 @@ package model;
  */
 public class RigaOrdine {
     private Prodotto currentProduct;
-    private  Integer quantity;
+    private Integer quantity;
 
     public RigaOrdine(){
 

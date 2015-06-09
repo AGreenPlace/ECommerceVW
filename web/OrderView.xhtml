@@ -7,7 +7,9 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <f:view>
     <ui:repeat value="${orderViewController.currentOrder.righeordine}" var="rigaOrdine">
-        <h:outputText value="${rigaOrdine.quantity}"/>
+        <p>
+            <h:outputText value="${rigaOrdine.quantity}"/>
+        </p>
     </ui:repeat>
 </f:view>
 </html>
