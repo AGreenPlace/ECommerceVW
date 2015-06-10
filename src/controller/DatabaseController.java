@@ -24,8 +24,8 @@ public class DatabaseController {
         this.catalog = new Catalogo();
         this.utenti = new HashMap<>();
         this.orders = new LinkedList<>();
-        Utente u1 = new Utente("luca@luca.com","luca");
-        Utente u2 = new Utente("andrea@andrea.com","andrea");
+        Utente u1 = new Cliente("luca@luca.com","luca");
+        Utente u2 = new Amministratore("andrea@andrea.com","andrea");
         this.utenti.put(u1.getEmail(),u1);
         this.utenti.put(u2.getEmail(),u2);
 
@@ -47,7 +47,7 @@ public class DatabaseController {
         return utenti.get(email);
     }
 
-    public Boolean createUser(String nome,String cognome,String email,String password,String username,String nation,String city,String cap,String location) throws Exception{
+    public Boolean createClient(String nome,String cognome,String email,String password,String username,String nation,String city,String cap,String location) throws Exception{
         if(nome.isEmpty())
             throw new Exception("Name is Empty");
         if(cognome.isEmpty())
@@ -66,15 +66,15 @@ public class DatabaseController {
             throw new Exception("Cap is Empty");
         if(location.isEmpty())
             throw new Exception("Location is Empty");
-        Utente nuovoUtente = new Utente(email, password);
-        nuovoUtente.setNome(nome);
-        nuovoUtente.setCognome(cognome);
-        nuovoUtente.setUsername(username);
-        nuovoUtente.setNation(nation);
-        nuovoUtente.setCity(city);
-        nuovoUtente.setCap(cap);
-        nuovoUtente.setLocation(location);
-        this.utenti.put(nuovoUtente.getEmail(),nuovoUtente);
+       Cliente nuovoCliente = new Cliente(email, password);
+        nuovoCliente.setNome(nome);
+        nuovoCliente.setCognome(cognome);
+        nuovoCliente.setUsername(username);
+        nuovoCliente.setNation(nation);
+        nuovoCliente.setCity(city);
+        nuovoCliente.setCap(cap);
+        nuovoCliente.setLocation(location);
+        this.utenti.put(nuovoCliente.getEmail(),nuovoCliente);
         return true;
     }
 

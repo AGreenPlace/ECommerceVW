@@ -44,16 +44,14 @@ public class LoginViewController {
     }
 
     public String authenticate(){
-        Boolean loggedIn = mainController.login(this.username,this.password);
-        if (loggedIn) {
-            return (String) getSession().getAttribute("previousPagePath");
+        String destination = mainController.login(this.username,this.password);
+        if (!destination.isEmpty()) {
+            return destination;
         }
-        else return "LoginView.xhtml";
+        return "LoginView.xhtml";
     }
 
     private HttpSession getSession(){
-        FacesContext context = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession)context.getExternalContext().getSession(true);
-        return session;
+        return mainController.getSession();
     }
 }

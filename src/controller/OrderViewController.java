@@ -38,10 +38,10 @@ public class OrderViewController {
         Prodotto prodottoDaAggiungere = this.mainController.getProductFromCatalog(this.codiceProdottoDaAggiungere);
         String output;
         Integer selectedQuantity=new Integer(this.quantity);
-        if((prodottoDaAggiungere.getQuantity()>= selectedQuantity)|| prodottoDaAggiungere.getQuantity()>0){
+
+        if((prodottoDaAggiungere.getQuantity()>= selectedQuantity)&& prodottoDaAggiungere.getQuantity()>0){
             prodottoDaAggiungere.setQuantity(prodottoDaAggiungere.getQuantity()-selectedQuantity);
             this.currentOrder = this.mainController.addProductToOrder(prodottoDaAggiungere,selectedQuantity);
-
             if (this.currentOrder != null){
                 output = "OrderView.xhtml";
             }

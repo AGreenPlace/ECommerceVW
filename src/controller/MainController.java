@@ -1,15 +1,14 @@
 package controller;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
-import model.InvalidPasswordException;
-import model.Ordine;
-import model.Prodotto;
-import model.Utente;
+import model.*;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.persistence.criteria.Order;
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,8 @@ import java.util.Map;
 @Stateless
 public class MainController {
     private DatabaseController databaseController = new DatabaseController();
-    private Utente currentUser;
+    private Cliente currentUser;
+    private Amministratore currentAdministrator;
     private Prodotto currentProduct;
 
 
@@ -50,10 +50,10 @@ public class MainController {
 
     }
 
-    public Boolean login(String email, String password){
+    public String login(String email, String password){
         Utente currentUser = databaseController.checkUser(email);
         if (currentUser == null){
-            return false;
+            return "";
         }
         Boolean passIsCorrect;
         try {
@@ -63,10 +63,20 @@ public class MainController {
             passIsCorrect = false;
         }
         if (passIsCorrect){
-            this.currentUser = currentUser;
-            return true;
+            if(currentUser.getClass().isInstance(Cliente.class)) {
+                this.currentUser = (Cliente)currentUser;
+                return (String)getSession().getAttribute("previousPagePath");
+            }
+            if(currentUser.getClass().isInstance(Amministratore.class)){
+                this.currentAdministrator= (Amministratore)currentUser;
+                return "AdministrationPage.xhtml";
+            }
+            if(currentUser.getClass().isInstance(Utente.class)){
+
+            }
+            return "";
         }
-        else return false;
+        else return "";
     }
 
 
@@ -77,7 +87,7 @@ public class MainController {
         else {
             Boolean userWasCreated = false;
             try {
-                userWasCreated = databaseController.createUser(nome,cognome,email,password,username,nation,city,cap,location);
+                userWasCreated = databaseController.createClient(nome, cognome, email, password, username, nation, city, cap, location);
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
@@ -102,13 +112,19 @@ public class MainController {
         return currentUser;
     }
 
-    public void setCurrentUser(Utente currentUser) {
+    public void setCurrentUser(Cliente currentUser) {
         this.currentUser = currentUser;
     }
 
 
     public Ordine getCurrentOrderFromHistory(Long id) {
         return this.currentUser.getOrderHistory().get(id);
+    }
+
+    public HttpSession getSession(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession)context.getExternalContext().getSession(true);
+        return session;
     }
 }
 
