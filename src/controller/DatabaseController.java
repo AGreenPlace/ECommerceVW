@@ -78,7 +78,6 @@ public class DatabaseController {
         return true;
     }
 
-
     public Boolean addOrderToHandle(Ordine toBeHandled) {
         return this.orders.add(toBeHandled);
     }
