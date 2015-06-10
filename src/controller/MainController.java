@@ -63,11 +63,11 @@ public class MainController {
             passIsCorrect = false;
         }
         if (passIsCorrect){
-            if(currentUser.getClass().isInstance(Cliente.class)) {
+            if(currentUser.getClass().equals(Cliente.class)) {
                 this.currentUser = (Cliente)currentUser;
                 return (String)getSession().getAttribute("previousPagePath");
             }
-            if(currentUser.getClass().isInstance(Amministratore.class)){
+            if(currentUser.getClass().equals(Amministratore.class)){
                 this.currentAdministrator= (Amministratore)currentUser;
                 return "AdministrationViex.xhtml";
             }
