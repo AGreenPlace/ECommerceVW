@@ -71,9 +71,6 @@ public class MainController {
                 this.currentAdministrator= (Amministratore)currentUser;
                 return "AdministrationPage.xhtml";
             }
-            if(currentUser.getClass().isInstance(Utente.class)){
-
-            }
             return "";
         }
         else return "";
