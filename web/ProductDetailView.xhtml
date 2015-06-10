@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <body>
 <f:view>
     <h:form>
@@ -16,14 +17,15 @@
     <p>Code: ${productDetailViewController.currentProd.code}</p>
     <p>Quantity: ${productDetailViewController.currentProd.quantity}</p>
     <p>Price: ${productDetailViewController.currentProd.price}</p>
-    <h:form>
-        <h:inputText value="#{orderViewController.quantity}"/>
-        <h:commandButton value="Add to Cart" action="#{orderViewController.addProductToOrder()}">
-            <f:param name="codiceProdottoDaAggiungere" value="${productDetailViewController.currentProd.code}"/>
-            <!--<f:param name="quantity" value="${productDetailViewController.quantity}"/>-->
-        </h:commandButton>
+    <c:if test="${productDetailViewController.currentUserExists()}">
+        <h:form>
+            <h:inputText value="#{orderViewController.quantity}"/>
+            <h:commandButton value="Add to Cart" action="#{orderViewController.addProductToOrder()}">
+                <f:param name="codiceProdottoDaAggiungere" value="${productDetailViewController.currentProd.code}"/>
+            </h:commandButton>
 
-    </h:form>
+        </h:form>
+    </c:if>
 </f:view>
 </body>
 </html>

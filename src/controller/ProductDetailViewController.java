@@ -37,4 +37,10 @@ public class ProductDetailViewController {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+    public Boolean currentUserExists(){
+        if(this.mainController.getCurrentUser()!=null)
+            return true;
+        return false;
+    }
 }
