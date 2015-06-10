@@ -67,4 +67,14 @@ public class Catalogo {
     public Prodotto getProduct(String code){
         return this.products.get(code);
     }
+
+    public Prodotto addProduct(String name, int price, int quantity, String img) {
+        Prodotto toBeAdded = new Prodotto();
+        toBeAdded.setName(name);
+        toBeAdded.setPrice(price);
+        toBeAdded.setQuantity(quantity);
+        toBeAdded.setImg(img);
+        this.products.put(toBeAdded.getCode(), toBeAdded);
+        return toBeAdded;
+    }
 }

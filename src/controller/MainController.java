@@ -69,7 +69,7 @@ public class MainController {
             }
             if(currentUser.getClass().isInstance(Amministratore.class)){
                 this.currentAdministrator= (Amministratore)currentUser;
-                return "AdministrationPage.xhtml";
+                return "AdministrationViex.xhtml";
             }
             return "";
         }
@@ -122,6 +122,11 @@ public class MainController {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession)context.getExternalContext().getSession(true);
         return session;
+    }
+
+    public Prodotto addProductToCatalog(String name, int price, int quantity, String img) {
+        Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img);
+        return productCreated;
     }
 }
 

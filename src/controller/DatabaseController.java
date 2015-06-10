@@ -82,4 +82,10 @@ public class DatabaseController {
     public Boolean addOrderToHandle(Ordine toBeHandled) {
         return this.orders.add(toBeHandled);
     }
+
+    public Prodotto addProductToCatalog(String name, int price, int quantity, String img) {
+        Prodotto productAdded= this.catalog.addProduct(name, price, quantity, img);
+        return productAdded;
+
+    }
 }
