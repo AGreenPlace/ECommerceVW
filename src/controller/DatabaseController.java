@@ -86,6 +86,5 @@ public class DatabaseController {
     public Prodotto addProductToCatalog(String name, int price, int quantity, String img) {
         Prodotto productAdded= this.catalog.addProduct(name, price, quantity, img);
         return productAdded;
-
     }
 }
