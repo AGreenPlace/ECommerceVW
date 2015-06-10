@@ -23,20 +23,28 @@ public class OrderViewController {
         String output;
         Boolean orderIsClosed = this.mainController.closeOrder();
         if(orderIsClosed)
-            output = "L'ordine è stato completato";
+            output = "index.xhtml";
         else
-            output = "Si è verificato un errore nella chiusura dell'ordine";
+            output = "index.xhtml";
         return output;
     }
 
     public String addProductToOrder(){
         Prodotto prodottoDaAggiungere = this.mainController.getProductFromCatalog(this.codiceProdottoDaAggiungere);
-        this.currentOrder = this.mainController.addProductToOrder(prodottoDaAggiungere,new Integer(this.quantity));
         String output;
-        if (this.currentOrder != null){
-            output = "OrderView.xhtml";
+        Integer selectedQuantity=new Integer(this.quantity);
+        if((prodottoDaAggiungere.getQuantity()>= selectedQuantity)|| prodottoDaAggiungere.getQuantity()>0){
+            prodottoDaAggiungere.setQuantity(prodottoDaAggiungere.getQuantity()-selectedQuantity);
+            this.currentOrder = this.mainController.addProductToOrder(prodottoDaAggiungere,selectedQuantity);
+
+            if (this.currentOrder != null){
+                output = "OrderView.xhtml";
+            }
+            else {
+                output = null;
+            }
         }
-        else {
+        else{
             output = null;
         }
         return output;
