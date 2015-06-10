@@ -13,7 +13,12 @@ public class Ordine {
     private String name;
     private LocalGregorianCalendar.Date dataCreazione;
     private List<RigaOrdine> righeordine;
+    private Boolean isClosed;
 
+    public Ordine(Long id) {
+        this.id = id;
+        this.isClosed = false;
+    }
 
     public Boolean addProduct(Prodotto prodotto, Integer quantity) {
         if (this.righeordine == null)
@@ -36,5 +41,34 @@ public class Ordine {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getIsClosed() {
+        return isClosed;
+    }
+
+    public void setIsClosed(Boolean isClosed) {
+        this.isClosed = isClosed;
+    }
+
+    public LocalGregorianCalendar.Date getDataCreazione() {
+        return dataCreazione;
+    }
+
+    public void setDataCreazione(LocalGregorianCalendar.Date dataCreazione) {
+        this.dataCreazione = dataCreazione;
+    }
+
+    public Boolean close(){
+        this.isClosed = true;
+        return true;
     }
 }

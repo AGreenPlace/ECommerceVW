@@ -121,8 +121,16 @@ public class Utente {
     }
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity){
-        if(this.currentOrder== null)
-            this.currentOrder = new Ordine();
+        if(this.currentOrder== null) {
+            Boolean isAccetable = false;
+            while (!isAccetable) {
+                Long idOrder = (long) (Math.random() * 100 + 1);
+                if(this.orderHistory == null||!this.orderHistory.containsKey(idOrder)) {
+                    this.currentOrder = new Ordine(idOrder);
+                    isAccetable = true;
+                }
+            }
+        }
         Boolean productAdded = this.currentOrder.addProduct(prodotto, quantity);
         if (productAdded)
             return this.currentOrder;
@@ -135,6 +143,7 @@ public class Utente {
             this.orderHistory = new HashMap<>();
         this.orderHistory.put(this.currentOrder.getId(),this.currentOrder);
         Ordine output= this.orderHistory.get(this.currentOrder.getId());
+        output.close();
         this.currentOrder= null;
         return output;
     }

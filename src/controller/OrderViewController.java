@@ -19,6 +19,11 @@ public class OrderViewController {
     String codiceProdottoDaAggiungere;
     String quantity;
 
+    public String initWithId(Long id){
+        this.currentOrder = this.mainController.getCurrentOrderFromHistory(id);
+        return "OrderView.xhtml";
+    }
+
     public String closeOrder(){
         String output;
         Boolean orderIsClosed = this.mainController.closeOrder();

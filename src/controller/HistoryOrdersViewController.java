@@ -15,17 +15,12 @@ import java.util.List;
 public class HistoryOrdersViewController {
     @EJB
     private MainController mainController;
-    private Ordine currentOrder;
 
 
     public List<Ordine> getHistoryOrder(){
         return new LinkedList<Ordine>(mainController.displayOrders().values());
     }
 
-    public String getOrderById(Long id){
-        this.currentOrder=this.mainController.getCurrentOrderFromHistory(id);
-        return "OrderView.xhtml";
-    }
 
 
 }

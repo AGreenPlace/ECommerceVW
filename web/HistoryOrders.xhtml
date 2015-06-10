@@ -6,15 +6,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:form>
-        <ui:repeat value="${historyOrdersViewController.getHistoryOrder}" var="ordine">
+        <ui:repeat value="${historyOrdersViewController.getHistoryOrder()}" var="ordine">
            <h:form>
-               <h:commandLink action="${historyOrdersViewController.getOrderById(ordine.id)}">
-               <p>Ordine: ${ordine.nome}</p>
-               <p>Data Creazione: ${ordine.dataCreazione}</p>
+               <h:commandLink action="#{orderViewController.initWithId(ordine.id)}">
+                    <p>Ordine: ${ordine.id}</p>
+                    <p>Data Creazione: ${ordine.dataCreazione}</p>
                </h:commandLink>
             </h:form>>
         </ui:repeat>
-    </h:form>
 </f:view>
 </html>
