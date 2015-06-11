@@ -79,4 +79,8 @@ public class OrderViewController {
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
+
+    public MainController getMainController() {
+        return mainController;
+    }
 }

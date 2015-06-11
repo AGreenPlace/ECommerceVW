@@ -41,6 +41,7 @@ public class Cliente extends Utente {
             this.orderHistory = new HashMap<>();
         this.orderHistory.put(this.currentOrder.getId(),this.currentOrder);
         Ordine output= this.orderHistory.get(this.currentOrder.getId());
+        output.setOrdersClient(this);
         output.close();
         this.currentOrder= null;
         return output;

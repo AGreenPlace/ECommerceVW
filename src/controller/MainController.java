@@ -20,7 +20,6 @@ import java.util.Map;
 public class MainController {
     private DatabaseController databaseController = new DatabaseController();
     private Utente currentUser;
-    //private Amministratore currentAdministrator;
     private Prodotto currentProduct;
 
 
@@ -65,11 +64,9 @@ public class MainController {
         if (passIsCorrect){
             this.currentUser = currentUser;
             if(currentUser.getClass().equals(Cliente.class)) {
-//                this.currentUser = (Cliente)currentUser;
                 return (String)getSession().getAttribute("previousPagePath");
             }
             if(currentUser.getClass().equals(Amministratore.class)){
-//                this.currentAdministrator= (Amministratore)currentUser;
                 return "AdministrationView.xhtml";
             }
             return "";
@@ -92,6 +89,7 @@ public class MainController {
             return userWasCreated;
         }
     }
+
 
 
     public Boolean closeOrder(){
@@ -133,6 +131,11 @@ public class MainController {
         Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img, description);
         return productCreated;
     }
+
+    public Integer checkCurrentUser(){
+        return this.checkType(this.currentUser);
+    }
+
     private Integer checkType(Utente currentUser){
         if(currentUser.getClass().equals(Cliente.class))
             return 0;
