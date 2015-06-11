@@ -24,7 +24,8 @@
     </c:if>
     <c:if test="${orderViewController.mainController.checkCurrentUser()==1}">
         <h:form>
-            <h:commandLink action="" value="${orderViewController.currentOrder.ordersClient.email}"/>
+            <h:commandLink action="#{userViewController.initWithEmail()}" value="${orderViewController.currentOrder.ordersClient.email}"/>
+                <f:param name="email" value="#{orderViewController.currentOrder.ordersClient.email}"/>
         </h:form>
     </c:if>
 </f:view>

@@ -143,5 +143,9 @@ public class MainController {
             return 1;
         return -1;
     }
+
+    public Cliente getClientFromId(String email){
+        return (Cliente)this.databaseController.checkUser(email);
+    }
 }
 

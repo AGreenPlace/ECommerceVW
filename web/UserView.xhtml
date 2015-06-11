@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <p>Nome: </p><h:outputText value="${userViewController.cliente.nome}"/>
+    <p>Cognome: </p><h:outputText value="${userViewController.cliente.cognome}"/>
+    <p>Email: </p><h:outputText value="${userViewController.cliente.email}"/>
+    <p>Username: </p><h:outputText value="${userViewController.cliente.username}"/>
+    <p>Nation: </p><h:outputText value="${userViewController.cliente.nation}"/>
+    <p>City: </p><h:outputText value="${userViewController.cliente.city}"/>
+    <p>CAP: </p><h:outputText value="${userViewController.cliente.cap}"/>
+    <p>Location: </p><h:outputText value="${userViewController.cliente.location}"/>
+    <h:form>
+        <h:commandButton action="AdministrationView.xhtml" value="Home"/>
+    </h:form>
+</f:view>
+</html>
