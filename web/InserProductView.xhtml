@@ -12,6 +12,8 @@
         <p>Price: </p><h:inputText value="#{insertProductViewController.price}"/>
         <p>Quantity: </p><h:inputText value="#{insertProductViewController.quantity}"/>
         <p>Immagine: </p><h:inputText value="#{insertProductViewController.img}"/>
+        <h:commandButton value="Insert Product" action="#{insertProductViewController.addProduct()}"/>
     </h:form>
 </f:view>
 </html>
+

@@ -16,14 +16,14 @@ import java.util.Map;
 public class DatabaseController {
     private Catalogo catalog;
     private Map<String,Utente> utenti;
-    private List<Ordine> orders;
+    private Map<Long,Ordine> orders;
 
 
 
     public DatabaseController() {
         this.catalog = new Catalogo();
         this.utenti = new HashMap<>();
-        this.orders = new LinkedList<>();
+        this.orders = new HashMap<>();
         Utente u1 = new Cliente("luca@luca.com","luca");
         Utente u2 = new Amministratore("andrea@andrea.com","andrea");
         this.utenti.put(u1.getEmail(),u1);
@@ -79,7 +79,10 @@ public class DatabaseController {
     }
 
     public Boolean addOrderToHandle(Ordine toBeHandled) {
-        return this.orders.add(toBeHandled);
+                this.orders.put(toBeHandled.getId(), toBeHandled);
+        if(this.orders.containsValue(toBeHandled))
+            return true;
+        else return false;
     }
 
     public Prodotto addProductToCatalog(String name, int price, int quantity, String img) {
