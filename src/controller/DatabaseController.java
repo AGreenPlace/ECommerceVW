@@ -85,8 +85,8 @@ public class DatabaseController {
         else return false;
     }
 
-    public Prodotto addProductToCatalog(String name, int price, int quantity, String img) {
-        Prodotto productAdded= this.catalog.addProduct(name, price, quantity, img);
+    public Prodotto addProductToCatalog(String name, int price, int quantity, String img, String description) {
+        Prodotto productAdded = this.catalog.addProduct(name, price, quantity, img, description);
         return productAdded;
     }
 }

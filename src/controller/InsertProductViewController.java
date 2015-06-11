@@ -17,10 +17,11 @@ public class InsertProductViewController {
     private int price;
     private int quantity;
     private String img;
+    private String description;
 
 
-    public String addProduct(String name, int price, int quantity, String img){
-        mainController.addProductToCatalog(name, price, quantity, img);
+    public String addProduct(){
+        mainController.addProductToCatalog(name, price, quantity, img, description);
         return"";
     }
 

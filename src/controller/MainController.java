@@ -69,7 +69,7 @@ public class MainController {
             }
             if(currentUser.getClass().equals(Amministratore.class)){
                 this.currentAdministrator= (Amministratore)currentUser;
-                return "AdministrationViex.xhtml";
+                return "AdministrationView.xhtml";
             }
             return "";
         }
@@ -124,8 +124,8 @@ public class MainController {
         return session;
     }
 
-    public Prodotto addProductToCatalog(String name, int price, int quantity, String img) {
-        Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img);
+    public Prodotto addProductToCatalog(String name, int price, int quantity, String img, String description) {
+        Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img, description);
         return productCreated;
     }
 }

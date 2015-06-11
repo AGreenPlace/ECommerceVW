@@ -68,13 +68,25 @@ public class Catalogo {
         return this.products.get(code);
     }
 
-    public Prodotto addProduct(String name, int price, int quantity, String img) {
+    public Prodotto addProduct(String name, int price, int quantity, String img, String description) {
         Prodotto toBeAdded = new Prodotto();
         toBeAdded.setName(name);
         toBeAdded.setPrice(price);
         toBeAdded.setQuantity(quantity);
         toBeAdded.setImg(img);
+        toBeAdded.setDescription(description);
+        toBeAdded.setCode(this.generateProductCode());
         this.products.put(toBeAdded.getCode(), toBeAdded);
         return toBeAdded;
+    }
+
+    private String generateProductCode(){
+        String output="";
+        Boolean isAccettable = false;
+        while (!isAccettable) {
+            output = "" + Math.random() * 100 + 1;
+            isAccettable = !this.products.containsKey(output);
+        }
+        return output;
     }
 }
