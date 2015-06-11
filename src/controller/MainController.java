@@ -147,5 +147,9 @@ public class MainController {
     public Cliente getClientFromId(String email){
         return (Cliente)this.databaseController.checkUser(email);
     }
+
+    public Ordine validateOrder(Long id) {
+        return this.databaseController.evadiOrdine(id);
+    }
 }
 

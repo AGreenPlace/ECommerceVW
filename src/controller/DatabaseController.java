@@ -17,6 +17,7 @@ public class DatabaseController {
     private Catalogo catalog;
     private Map<String,Utente> utenti;
     private Map<Long,Ordine> orders;
+    private Map<Long, Ordine> ordersValidated;
 
 
 
@@ -96,5 +97,15 @@ public class DatabaseController {
 
     public void setOrders(Map<Long, Ordine> orders) {
         this.orders = orders;
+    }
+
+    public Ordine evadiOrdine(Long id) {
+        Ordine validatedOrder = this.orders.get(id);
+        validatedOrder.setDataSpedizione();
+        this.ordersValidated.put(validatedOrder.getId(), validatedOrder);
+        this.orders.remove(validatedOrder.getId());
+        return validatedOrder;
+
+
     }
 }

@@ -6,10 +6,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 <f:view>
-    <h:form>
-        <h:commandLink value ="Insert a New Product" action="InserProductView.xhtml"/>
-        <h:commandLink value="View Orders" action="HistoryOrders.xhtml"/>
-        <h:commandLink value="Evadi Ordine" action="ValidateOrderView.xhtml"/>
-    </h:form>
+    <ui:repeat value="${validateOrderViewController.invalidateOrders}" var="ordine">
+        <h:form>
+            <h:commandLink action="#{orderViewController.initWithId(ordine.id)}">
+                <p>Ordine: ${ordine.id}</p>
+                <p>Data Creazione: ${ordine.dataCreazione}</p>
+            </h:commandLink>
+        </h:form>
+    </ui:repeat>
 </f:view>
 </html>

@@ -2,6 +2,8 @@ package model;
 
 import sun.util.calendar.LocalGregorianCalendar;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Ordine {
     private Long id;
     private String name;
     private LocalGregorianCalendar.Date dataCreazione;
+    private Date dataSpedizione;
     private List<RigaOrdine> righeordine;
     private Boolean isClosed;
     private Cliente ordersClient;
@@ -74,6 +77,15 @@ public class Ordine {
 
     public void setOrdersClient(Cliente ordersClient) {
         this.ordersClient = ordersClient;
+    }
+
+
+    public Date getDataSpedizione() {
+        return dataSpedizione;
+    }
+
+    public void setDataSpedizione() {
+        this.dataSpedizione = Calendar.getInstance().getTime();
     }
 
     public Boolean close(){
