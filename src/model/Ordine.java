@@ -14,6 +14,7 @@ public class Ordine {
     private LocalGregorianCalendar.Date dataCreazione;
     private List<RigaOrdine> righeordine;
     private Boolean isClosed;
+    private Cliente ordersClient;
 
     public Ordine(Long id) {
         this.id = id;
@@ -65,6 +66,14 @@ public class Ordine {
 
     public void setDataCreazione(LocalGregorianCalendar.Date dataCreazione) {
         this.dataCreazione = dataCreazione;
+    }
+
+    public Cliente getOrdersClient() {
+        return ordersClient;
+    }
+
+    public void setOrdersClient(Cliente ordersClient) {
+        this.ordersClient = ordersClient;
     }
 
     public Boolean close(){
