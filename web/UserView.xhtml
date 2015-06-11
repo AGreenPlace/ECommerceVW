@@ -6,14 +6,14 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 <f:view>
-    <p>Nome: </p><h:outputText value="${userViewController.cliente.nome}"/>
-    <p>Cognome: </p><h:outputText value="${userViewController.cliente.cognome}"/>
-    <p>Email: </p><h:outputText value="${userViewController.cliente.email}"/>
-    <p>Username: </p><h:outputText value="${userViewController.cliente.username}"/>
-    <p>Nation: </p><h:outputText value="${userViewController.cliente.nation}"/>
-    <p>City: </p><h:outputText value="${userViewController.cliente.city}"/>
-    <p>CAP: </p><h:outputText value="${userViewController.cliente.cap}"/>
-    <p>Location: </p><h:outputText value="${userViewController.cliente.location}"/>
+    <p>Nome: <h:outputText value="${userViewController.cliente.nome}"/></p>
+    <p>Cognome: <h:outputText value="${userViewController.cliente.cognome}"/></p>
+    <p>Email: <h:outputText value="${userViewController.cliente.email}"/></p>
+    <p>Username: <h:outputText value="${userViewController.cliente.username}"/></p>
+    <p>Nation: <h:outputText value="${userViewController.cliente.nation}"/></p>
+    <p>City: <h:outputText value="${userViewController.cliente.city}"/></p>
+    <p>CAP: <h:outputText value="${userViewController.cliente.cap}"/></p>
+    <p>Location: <h:outputText value="${userViewController.cliente.location}"/></p>
     <h:form>
         <h:commandButton action="AdministrationView.xhtml" value="Home"/>
     </h:form>
