@@ -22,7 +22,7 @@ public class InsertProductViewController {
 
     public String addProduct(){
         mainController.addProductToCatalog(name, price, quantity, img, description);
-        return"";
+        return"AdministrationView";
     }
 
     public String getName() {
@@ -55,6 +55,14 @@ public class InsertProductViewController {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 
