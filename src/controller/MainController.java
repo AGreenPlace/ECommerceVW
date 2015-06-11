@@ -19,13 +19,13 @@ import java.util.Map;
 @Stateless
 public class MainController {
     private DatabaseController databaseController = new DatabaseController();
-    private Cliente currentUser;
-    private Amministratore currentAdministrator;
+    private Utente currentUser;
+    //private Amministratore currentAdministrator;
     private Prodotto currentProduct;
 
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity){
-        return currentUser.addProductToOrder(prodotto, quantity);
+        return ((Cliente)currentUser).addProductToOrder(prodotto, quantity);
     }
 
     public String consultCatalog(){
@@ -63,12 +63,13 @@ public class MainController {
             passIsCorrect = false;
         }
         if (passIsCorrect){
+            this.currentUser = currentUser;
             if(currentUser.getClass().equals(Cliente.class)) {
-                this.currentUser = (Cliente)currentUser;
+//                this.currentUser = (Cliente)currentUser;
                 return (String)getSession().getAttribute("previousPagePath");
             }
             if(currentUser.getClass().equals(Amministratore.class)){
-                this.currentAdministrator= (Amministratore)currentUser;
+//                this.currentAdministrator= (Amministratore)currentUser;
                 return "AdministrationView.xhtml";
             }
             return "";
@@ -94,14 +95,18 @@ public class MainController {
 
 
     public Boolean closeOrder(){
-        Ordine closedOrder = this.currentUser.closeOrder();
+        Ordine closedOrder = ((Cliente)this.currentUser).closeOrder();
         if (closedOrder != null)
             this.databaseController.addOrderToHandle(closedOrder);
         return closedOrder!=null;
     }
 
     public Map<Long,Ordine> displayOrders(){
-        return this.currentUser.getOrderHistory();
+        if(this.checkType(this.currentUser)==0)
+            return ((Cliente)this.currentUser).getOrderHistory();
+        if (this.checkType(this.currentUser)==1)
+            return databaseController.getOrders();
+        return null;
     }
 
 
@@ -109,13 +114,13 @@ public class MainController {
         return currentUser;
     }
 
-    public void setCurrentUser(Cliente currentUser) {
+    public void setCurrentUser(Utente currentUser) {
         this.currentUser = currentUser;
     }
 
 
     public Ordine getCurrentOrderFromHistory(Long id) {
-        return this.currentUser.getOrderHistory().get(id);
+        return this.displayOrders().get(id);
     }
 
     public HttpSession getSession(){
@@ -127,6 +132,13 @@ public class MainController {
     public Prodotto addProductToCatalog(String name, int price, int quantity, String img, String description) {
         Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img, description);
         return productCreated;
+    }
+    private Integer checkType(Utente currentUser){
+        if(currentUser.getClass().equals(Cliente.class))
+            return 0;
+        if(currentUser.getClass().equals(Amministratore.class))
+            return 1;
+        return -1;
     }
 }
 

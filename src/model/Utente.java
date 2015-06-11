@@ -87,5 +87,4 @@ public abstract class Utente {
         return email.hashCode();
     }
 
-
 }

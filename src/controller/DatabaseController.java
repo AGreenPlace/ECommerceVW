@@ -89,4 +89,12 @@ public class DatabaseController {
         Prodotto productAdded = this.catalog.addProduct(name, price, quantity, img, description);
         return productAdded;
     }
+
+    public Map<Long, Ordine> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Map<Long, Ordine> orders) {
+        this.orders = orders;
+    }
 }
