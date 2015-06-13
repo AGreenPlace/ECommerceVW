@@ -4,6 +4,7 @@ import model.Ordine;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.persistence.criteria.Order;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +21,5 @@ public class HistoryOrdersViewController {
     public List<Ordine> getHistoryOrder(){
         return new LinkedList<Ordine>(mainController.displayOrders().values());
     }
-
-
 
 }

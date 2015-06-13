@@ -103,10 +103,13 @@ public class MainController {
         if(this.checkType(this.currentUser)==0)
             return ((Cliente)this.currentUser).getOrderHistory();
         if (this.checkType(this.currentUser)==1)
-            return databaseController.getOrders();
+            return databaseController.getAllOrders();
         return null;
     }
 
+    public Map<Long,Ordine> displayNotValidatedOrders(){
+        return databaseController.getOrders();
+    }
 
     public Utente getCurrentUser() {
         return currentUser;

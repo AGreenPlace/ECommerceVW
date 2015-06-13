@@ -91,8 +91,15 @@ public class DatabaseController {
         return productAdded;
     }
 
-    public Map<Long, Ordine> getOrders() {
-        return orders;
+    public Map<Long, Ordine> getOrders(){
+        return this.orders;
+    }
+
+    public Map<Long, Ordine> getAllOrders() {
+        Map<Long,Ordine> output = new HashMap<>(this.orders);
+        if (this.ordersValidated != null)
+            output.putAll(this.ordersValidated);
+        return output;
     }
 
     public void setOrders(Map<Long, Ordine> orders) {
@@ -102,6 +109,8 @@ public class DatabaseController {
     public Ordine evadiOrdine(Long id) {
         Ordine validatedOrder = this.orders.get(id);
         validatedOrder.setDataSpedizione();
+        if (this.ordersValidated == null)
+            this.ordersValidated = new HashMap<>();
         this.ordersValidated.put(validatedOrder.getId(), validatedOrder);
         this.orders.remove(validatedOrder.getId());
         return validatedOrder;
