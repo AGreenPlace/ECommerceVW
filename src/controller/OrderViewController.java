@@ -18,6 +18,8 @@ public class OrderViewController {
     @ManagedProperty(value = "#{param.codiceProdottoDaAggiungere}")
     String codiceProdottoDaAggiungere;
     String quantity;
+    @ManagedProperty(value = "#{param.sender}")
+    String sender;
 
     public String initWithId(Long id){
         this.currentOrder = this.mainController.getCurrentOrderFromHistory(id);
@@ -82,5 +84,20 @@ public class OrderViewController {
 
     public MainController getMainController() {
         return mainController;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public Boolean provaSender(){
+        if (this.sender.equals("ValidateOrderView")) {
+            return true;
+        }
+        return false;
     }
 }

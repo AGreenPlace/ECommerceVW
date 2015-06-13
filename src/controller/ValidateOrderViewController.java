@@ -25,7 +25,7 @@ public class ValidateOrderViewController {
 
     public String validateOrder(){
         this.mainController.validateOrder(this.orderId);
-        return "AdministrationView.html";
+        return "AdministrationView.xhtml";
 
     }
 
