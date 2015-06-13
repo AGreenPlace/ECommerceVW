@@ -1,9 +1,14 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
 /**
  * Created by Luca on 29/05/2015.
  */
+@Entity
 public class RigaOrdine {
+    @OneToOne
     private Prodotto currentProduct;
     private Integer quantity;
 

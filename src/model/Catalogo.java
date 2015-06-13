@@ -11,9 +11,9 @@ import java.util.Map;
  * Created by Andrea on 07/05/15.
  */
 
-@Entity
+
 public class Catalogo {
-    @OneToMany
+
     private Map<String, Prodotto> products;
 
 

@@ -1,15 +1,32 @@
 package model;
 
+import com.sun.istack.NotNull;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.validation.constraints.Pattern;
 import java.util.*;
 
 /**
  * Created by Andrea on 27/05/15.
  */
+@Entity
 public abstract class Utente {
+    @Column(nullable=false)
     private String nome;
+    @Column(nullable=false)
     private String cognome;
+    @Column(nullable=false)
     private String username;
+    @Column(nullable=false)
     private String password;
+    @Column(nullable=false)
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+            + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9]"
+            + "(?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
+            + "(?:[a-z0-9-]*[a-z0-9])?",
+            message = "{invalid.email}")
     private String email;
 
     public Utente(String email, String password) {

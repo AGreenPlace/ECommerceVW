@@ -2,6 +2,7 @@ package model;
 
 import sun.util.calendar.LocalGregorianCalendar;
 
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -10,18 +11,30 @@ import java.util.List;
 /**
  * Created by Luca on 29/05/2015.
  */
+@Entity
 public class Ordine {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false)
     private String name;
-    private LocalGregorianCalendar.Date dataCreazione;
+    @Column(nullable=false)
+    private Date dataCreazione;
     private Date dataSpedizione;
+    @OneToMany
     private List<RigaOrdine> righeordine;
+    @Column(nullable=false)
     private Boolean isClosed;
+    @Column(nullable=false)
+    @ManyToOne
     private Cliente ordersClient;
 
     public Ordine(Long id) {
         this.id = id;
         this.isClosed = false;
+    }
+
+    public Ordine() {
     }
 
     public Boolean addProduct(Prodotto prodotto, Integer quantity) {
@@ -63,11 +76,11 @@ public class Ordine {
         this.isClosed = isClosed;
     }
 
-    public LocalGregorianCalendar.Date getDataCreazione() {
+    public Date getDataCreazione() {
         return dataCreazione;
     }
 
-    public void setDataCreazione(LocalGregorianCalendar.Date dataCreazione) {
+    public void setDataCreazione(Date dataCreazione) {
         this.dataCreazione = dataCreazione;
     }
 

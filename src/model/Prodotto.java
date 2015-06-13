@@ -7,14 +7,20 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQuery(name = "findAllProducts", query = "SELECT p FROM Prodotto p")
 public class Prodotto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false)
     private String name;
+    @Column(nullable=false)
     private String code;
+    @Column(length = 200)
     private String description;
+    @Column(nullable=false)
     private int price;
+    @Column(nullable=false)
     private int quantity;
     private String img;
 
