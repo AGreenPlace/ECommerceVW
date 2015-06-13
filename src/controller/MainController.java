@@ -7,10 +7,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import javax.persistence.criteria.Order;
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
@@ -21,10 +18,12 @@ import java.util.Map;
  * Created by Andrea on 07/05/15.
  */
 @Stateless
+@PersistenceContext(unitName = "database", type = PersistenceContextType.EXTENDED)
 public class MainController {
     private DatabaseController databaseController = new DatabaseController();
     private Utente currentUser;
     private Prodotto currentProduct;
+    public EntityManager em;
 
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity) {
@@ -36,7 +35,7 @@ public class MainController {
     }
 
     public List<Prodotto> getProductsInCatalog() {
-        return databaseController.getProductsInCatalog();
+        return databaseController.getProductsInCatalog(this.em);
     }
 
     public Prodotto getCurrentProduct() {
@@ -159,7 +158,7 @@ public class MainController {
 
     public void openEntityManager() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ECommerceVW");
-        EntityManager em = emf.createEntityManager();
+        this.em = emf.createEntityManager();
 
     }
 }

@@ -4,6 +4,9 @@ import model.*;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.management.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,8 +35,10 @@ public class DatabaseController {
 
     }
 
-    public List<Prodotto> getProductsInCatalog(){
-        return this.catalog.getProducts();
+    public List<Prodotto> getProductsInCatalog(EntityManager em){
+        javax.persistence.Query query = em.createQuery("SELECT p from Prodotto as p");
+        List<Prodotto>result = query.getResultList();
+        return result;
     }
 
     public String describeCatalog(){
