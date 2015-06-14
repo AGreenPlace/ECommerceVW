@@ -27,7 +27,7 @@
             <h:commandLink action="#{userViewController.initWithEmail()}" value="${orderViewController.currentOrder.ordersClient.email}">
                 <f:param name="email" value="#{orderViewController.currentOrder.ordersClient.email}"/>
             </h:commandLink>
-                <h:commandButton action="#{validateOrderViewController.validateOrder()}" value="Validate Order">
+                <h:commandButton action="#{validateOrderViewController.validateOrder()}" value="Validate Order" rendered="#{orderViewController.provaSender}">
                     <f:param value="${orderViewController.currentOrder.id}" name="orderId"/>
                 </h:commandButton>
         </h:form>

@@ -2,15 +2,13 @@ package controller;
 
 import model.*;
 
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.Query;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.Query;
 
 /**
  * Created by Andrea on 07/05/15.
