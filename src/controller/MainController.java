@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
@@ -23,6 +24,7 @@ public class MainController {
     private DatabaseController databaseController = new DatabaseController();
     private Utente currentUser;
     private Prodotto currentProduct;
+    @PersistenceContext(unitName = "database", type = PersistenceContextType.EXTENDED)
     public EntityManager em;
 
 
@@ -35,7 +37,12 @@ public class MainController {
     }
 
     public List<Prodotto> getProductsInCatalog() {
-        return databaseController.getProductsInCatalog(this.em);
+        /*openEntityManager();
+        return databaseController.getProductsInCatalog(this.em);*/
+        CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(Prodotto.class);
+        cq.select(cq.from(Prodotto.class));
+        List<Prodotto> products = em.createQuery(cq).getResultList();
+        return products;
     }
 
     public Prodotto getCurrentProduct() {

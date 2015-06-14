@@ -11,22 +11,22 @@ import java.util.List;
 /**
  * Created by Luca on 29/05/2015.
  */
-@Entity
+/*@Entity*/
 public class Ordine {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)*/
     private Long id;
-    @Column(nullable=false)
+    /*@Column(nullable=false)*/
     private String name;
-    @Column(nullable=false)
+    /*@Column(nullable=false)*/
     private Date dataCreazione;
     private Date dataSpedizione;
-    @OneToMany
+    /*@OneToMany*/
     private List<RigaOrdine> righeordine;
-    @Column(nullable=false)
+    /*@Column(nullable=false)*/
     private Boolean isClosed;
-    @Column(nullable=false)
-    @ManyToOne
+    /*@Column(nullable=false)
+    @ManyToOne*/
     private Cliente ordersClient;
 
     public Ordine(Long id) {

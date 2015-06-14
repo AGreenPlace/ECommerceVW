@@ -8,24 +8,33 @@ import java.util.Map;
  * Created by Luca on 10/06/2015.
  */
 
+/*
 @Entity
+@DiscriminatorValue("C")
+*/
 public class Cliente extends Utente {
-    @Column(nullable=false)
+    /*@Column(nullable=false)*/
     private String nation;
-    @Column(nullable=false)
+    /*@Column(nullable=false)*/
     private String city;
-    @Column(nullable=false)
+    /*@Column(nullable=false)*/
     private String cap;
-    @Column(nullable=false)
+    /*@Column(nullable=false)*/
     private String location;
-    @OneToOne
+    /*@OneToOne*/
     private Ordine currentOrder;
-    @OneToMany(mappedBy = "ordersClient")
+    /*@OneToMany(mappedBy = "ordersClient")*/
     private Map<Long,Ordine> orderHistory;
+
+    
+
 
     public Cliente(String email, String password) {
         super(email, password);
     }
+
+    public Cliente(){}
+
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity){
         if(this.currentOrder== null) {

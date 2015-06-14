@@ -2,9 +2,7 @@ package model;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.*;
 
@@ -12,6 +10,7 @@ import java.util.*;
  * Created by Andrea on 27/05/15.
  */
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Utente {
     @Column(nullable=false)
     private String nome;
@@ -22,6 +21,7 @@ public abstract class Utente {
     @Column(nullable=false)
     private String password;
     @Column(nullable=false)
+    @Id
     @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
             + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9]"
             + "(?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
@@ -33,6 +33,10 @@ public abstract class Utente {
         this.email = email;
         this.password = password;
     }
+
+    public Utente() {
+    }
+
 
     public Boolean verifyPassword(String password) throws InvalidPasswordException{
         if(!password.equals(this.password)){
