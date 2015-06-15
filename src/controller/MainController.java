@@ -23,7 +23,7 @@ public class MainController {
     private DatabaseController databaseController = new DatabaseController();
     private Utente currentUser;
     private Prodotto currentProduct;
-    @PersistenceContext(unitName = "wissel", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "wissel")
     public EntityManager em;
 
 
