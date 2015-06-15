@@ -38,6 +38,12 @@ public class MainController {
     public List<Prodotto> getProductsInCatalog() {
         /*openEntityManager();
         return databaseController.getProductsInCatalog(this.em);*/
+        Prodotto temp1 = new Prodotto();
+        temp1.setCode("1");
+        temp1.setName("Ombrello");
+        temp1.setDescription("Un fottuto Ombrello");
+        temp1.setQuantity(10);
+        this.em.persist(temp1);
         CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(Prodotto.class);
         cq.select(cq.from(Prodotto.class));
         List<Prodotto> products = em.createQuery(cq).getResultList();
