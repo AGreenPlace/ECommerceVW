@@ -19,12 +19,11 @@ import java.util.Map;
  * Created by Andrea on 07/05/15.
  */
 @Stateless
-@PersistenceContext(unitName = "database", type = PersistenceContextType.EXTENDED)
 public class MainController {
     private DatabaseController databaseController = new DatabaseController();
     private Utente currentUser;
     private Prodotto currentProduct;
-    @PersistenceContext(unitName = "database", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "wissel", type = PersistenceContextType.EXTENDED)
     public EntityManager em;
 
 
@@ -164,7 +163,7 @@ public class MainController {
     }
 
     public void openEntityManager() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ECommerceVW");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
         this.em = emf.createEntityManager();
 
     }
