@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Andrea on 07/05/15.
  */
-@ManagedBean
+@ManagedBean(name = "catalogViewController")
 public class CatalogViewController{
     @EJB
     private MainController mainController;

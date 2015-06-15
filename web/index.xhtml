@@ -22,7 +22,7 @@
         <h:form>
             <h:commandButton value="Display Orders" action="HistoryOrders"/>
         </h:form>
-     <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
+     <ui:repeat value="${controller.catalogViewController.displayCatalog()}" var="prodotto" >
          <h:form>
 
              <div id="container">
