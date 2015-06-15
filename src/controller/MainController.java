@@ -38,8 +38,8 @@ public class MainController {
     public List<Prodotto> getProductsInCatalog() {
         /*openEntityManager();
         return databaseController.getProductsInCatalog(this.em);*/
-        CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(Prodotto.class);
-        cq.select(cq.from(Prodotto.class));
+        CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(model.Prodotto.class);
+        cq.select(cq.from(model.Prodotto.class));
         List<Prodotto> products = em.createQuery(cq).getResultList();
         return products;
     }
