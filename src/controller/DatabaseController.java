@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  * Created by Andrea on 07/05/15.
@@ -34,9 +35,9 @@ public class DatabaseController {
     }
 
     public List<Prodotto> getProductsInCatalog(EntityManager em){
-        Query query = em.createNamedQuery("findAllProducts");
-        List<Prodotto>result = new LinkedList<>();
-        result.addAll(query.getResultList());
+        CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(Prodotto.class);
+        cq.select(cq.from(Prodotto.class));
+        List<Prodotto> result = em.createQuery(cq).getResultList();
         return result;
     }
 

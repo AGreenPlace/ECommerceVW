@@ -19,6 +19,7 @@
           <factory-entry name="database" value="eb76468a-3810-4072-9099-720ce6064472" />
           <factory-entry name="products-unit" />
           <factory-entry name="unit-jee-es1" />
+          <factory-entry name="wissel" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>
