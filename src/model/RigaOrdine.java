@@ -7,10 +7,10 @@ import javax.persistence.OneToOne;
 /**
  * Created by Luca on 29/05/2015.
  */
-/*@Entity*/
+@Entity
 public class RigaOrdine {
-    /*@OneToOne
-    @Id*/
+    @OneToOne
+    @Id
     private Prodotto currentProduct;
     private Integer quantity;
 

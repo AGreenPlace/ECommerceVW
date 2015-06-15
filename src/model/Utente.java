@@ -1,7 +1,5 @@
 package model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.*;
@@ -10,7 +8,9 @@ import java.util.*;
  * Created by Andrea on 27/05/15.
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance
+@DiscriminatorColumn(name="utente_tipo")
+@Table(name="utente")
 public abstract class Utente {
     @Column(nullable=false)
     private String nome;

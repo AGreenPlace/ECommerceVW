@@ -7,8 +7,8 @@ import java.util.Map;
 /**
  * Created by Luca on 10/06/2015.
  */
-/*@Entity
-@DiscriminatorValue("A")*/
+@Entity
+@DiscriminatorValue("A")
 public class Amministratore extends Utente {
 
     public Amministratore(String email, String password) {
