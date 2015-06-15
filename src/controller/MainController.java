@@ -96,7 +96,8 @@ public class MainController {
         else {
             Boolean userWasCreated = false;
             try {
-                userWasCreated = databaseController.createClient(nome, cognome, email, password, username, nation, city, cap, location);
+                Utente cliente = new Cliente(email, password);
+                em.persist(cliente);
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
