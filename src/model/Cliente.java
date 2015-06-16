@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.*;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,7 +26,7 @@ public class Cliente extends Utente {
     @OneToOne
     private Ordine currentOrder;
     @OneToMany(mappedBy = "ordersClient")
-    private Map<Long,Ordine> orderHistory;
+    private List<Ordine> orderHistory;
 
     
 
@@ -42,7 +44,7 @@ public class Cliente extends Utente {
             Boolean isAccetable = false;
             while (!isAccetable) {
                 Long idOrder = (long) (Math.random() * 100 + 1);
-                if(this.orderHistory == null||!this.orderHistory.containsKey(idOrder)) {
+                if(this.orderHistory == null||!this.historyContainsId(idOrder)) {
                     this.currentOrder = new Ordine(idOrder);
                     isAccetable = true;
                 }
@@ -57,15 +59,23 @@ public class Cliente extends Utente {
 
     public Ordine closeOrder() {
         if (this.orderHistory == null)
-            this.orderHistory = new HashMap<>();
-        this.orderHistory.put(this.currentOrder.getId(),this.currentOrder);
-        Ordine output= this.orderHistory.get(this.currentOrder.getId());
+            this.orderHistory = new LinkedList<>();
+        this.orderHistory.add(this.currentOrder);
+        Ordine output= this.currentOrder;
         output.setOrdersClient(this);
         output.close();
-        this.currentOrder= null;
+        this.currentOrder = null;
         return output;
     }
 
+
+    private Boolean historyContainsId(Long id){
+        for(Ordine current:this.orderHistory){
+            if(current.getId().equals(id))
+                return true;
+        }
+        return false;
+    }
 
 
     public String getNation() {
@@ -108,11 +118,11 @@ public class Cliente extends Utente {
         this.currentOrder = currentOrder;
     }
 
-    public Map<Long,Ordine> getOrderHistory() {
+    public List<Ordine> getOrderHistory() {
         return this.orderHistory;
     }
 
-    public void setOrderHistory(Map<Long, Ordine> orderHistory) {
+    public void setOrderHistory(List<Ordine> orderHistory) {
         this.orderHistory = orderHistory;
     }
 }

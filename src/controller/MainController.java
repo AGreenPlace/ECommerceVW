@@ -123,8 +123,13 @@ public class MainController {
     }
 
     public Map<Long, Ordine> displayOrders() {
-        if (this.checkType(this.currentUser) == 0)
-            return ((Cliente) this.currentUser).getOrderHistory();
+        if (this.checkType(this.currentUser) == 0) {
+            List<Ordine> orderList = ((Cliente) this.currentUser).getOrderHistory();
+            Map<Long,Ordine> output = new HashMap<>();
+            for (Ordine current: orderList)
+                output.put(current.getId(),current);
+            return output;
+        }
         if (this.checkType(this.currentUser) == 1) {
             Map<Long,Ordine> output = new HashMap<>();
             CriteriaQuery<Ordine> query = em.getCriteriaBuilder().createQuery(Ordine.class);
