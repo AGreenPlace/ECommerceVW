@@ -12,7 +12,7 @@
             <h:outputText value="${rigaOrdine.quantity}"/>
         </p>
     </ui:repeat>
-    <c:if test="${!orderViewController.currentOrder.isClosed}">
+    <c:if test="${orderViewController.currentOrder.state==0}">
         <h:form>
             <h:commandButton value="Close Order" action="#{orderViewController.closeOrder}"/>
         </h:form>

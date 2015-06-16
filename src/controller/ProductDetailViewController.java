@@ -17,7 +17,7 @@ public class ProductDetailViewController {
     private String desc;
     private Integer quantity;
 
-    public String initWithId(String id){
+    public String initWithId(Long id){
         this.currentProd = this.mainController.getProductFromCatalog(id);
         return "ProductDetailView.xhtml";
     }

@@ -15,8 +15,8 @@ public class OrderViewController {
     @EJB
     MainController mainController;
     Ordine currentOrder;
-    @ManagedProperty(value = "#{param.codiceProdottoDaAggiungere}")
-    String codiceProdottoDaAggiungere;
+    @ManagedProperty(value = "#{param.idProdottoDaAggiungere}")
+    Long idProdottoDaAggiungere;
     String quantity;
     @ManagedProperty(value = "#{param.sender}")
     String sender;
@@ -37,7 +37,7 @@ public class OrderViewController {
     }
 
     public String addProductToOrder(){
-        Prodotto prodottoDaAggiungere = this.mainController.getProductFromCatalog(this.codiceProdottoDaAggiungere);
+        Prodotto prodottoDaAggiungere = this.mainController.getProductFromCatalog(this.idProdottoDaAggiungere);
         String output;
         Integer selectedQuantity=new Integer(this.quantity);
 
@@ -66,12 +66,12 @@ public class OrderViewController {
         this.currentOrder = currentOrder;
     }
 
-    public String getCodiceProdottoDaAggiungere() {
-        return codiceProdottoDaAggiungere;
+    public Long getIdProdottoDaAggiungere() {
+        return idProdottoDaAggiungere;
     }
 
-    public void setCodiceProdottoDaAggiungere(String codiceProdottoDaAggiungere) {
-        this.codiceProdottoDaAggiungere = codiceProdottoDaAggiungere;
+    public void setIdProdottoDaAggiungere(Long idProdottoDaAggiungere) {
+        this.idProdottoDaAggiungere = idProdottoDaAggiungere;
     }
 
     public String getQuantity() {

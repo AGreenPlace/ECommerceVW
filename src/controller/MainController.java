@@ -58,7 +58,7 @@ public class MainController {
         this.currentProduct = currentProduct;
     }
 
-    public Prodotto getProductFromCatalog(String id) {
+    public Prodotto getProductFromCatalog(Long id) {
         this.currentProduct = this.em.find(Prodotto.class, id);
         return currentProduct;
     }

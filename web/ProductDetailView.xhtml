@@ -21,7 +21,7 @@
         <h:form>
             <h:inputText value="#{orderViewController.quantity}"/>
             <h:commandButton value="Add to Cart" action="#{orderViewController.addProductToOrder()}">
-                <f:param name="codiceProdottoDaAggiungere" value="${productDetailViewController.currentProd.code}"/>
+                <f:param name="idProdottoDaAggiungere" value="${productDetailViewController.currentProd.id}"/>
             </h:commandButton>
 
         </h:form>
