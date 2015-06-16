@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,8 +37,6 @@ public class MainController {
     }
 
     public List<Prodotto> getProductsInCatalog() {
-        /*openEntityManager();
-        return databaseController.getProductsInCatalog(this.em);*/
 /*        Prodotto temp1 = new Prodotto();
         temp1.setCode("236231023");
         temp1.setName("ParaFulmini");
@@ -45,11 +44,6 @@ public class MainController {
         temp1.setQuantity(62);
         temp1.setPrice(103);
         this.em.persist(temp1);*/
-/*        Amministratore amministratore= new Amministratore("luca@luca.com","luca");
-        amministratore.setNome("Luca");
-        amministratore.setCognome("Wissel");
-        amministratore.setUsername("lukeskywiss");
-        this.em.persist(amministratore);*/
         CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(model.Prodotto.class);
         cq.select(cq.from(model.Prodotto.class));
         List<Prodotto> products = em.createQuery(cq).getResultList();
@@ -65,13 +59,11 @@ public class MainController {
     }
 
     public Prodotto getProductFromCatalog(String id) {
-        /*this.currentProduct = databaseController.getProductFromCatalog(id);*/
         this.currentProduct = this.em.find(Prodotto.class, id);
         return currentProduct;
     }
 
     public String login(String email, String password) {
-      /*  Utente currentUser = databaseController.checkUser(email);*/
         Utente currentUser = this.em.find(Utente.class, email);
         if (currentUser == null) {
             return "";
@@ -97,7 +89,7 @@ public class MainController {
 
 
     public Boolean signUp(String nome, String cognome, String email, String password, String username, String nation, String city, String cap, String location) {
-        Utente user = databaseController.checkUser(email);
+        Utente user = this.em.find(Utente.class, email);
         if (user != null)
             return false;
         else {
@@ -123,21 +115,34 @@ public class MainController {
 
     public Boolean closeOrder() {
         Ordine closedOrder = ((Cliente) this.currentUser).closeOrder();
-        if (closedOrder != null)
-            this.databaseController.addOrderToHandle(closedOrder);
+//        if (closedOrder != null) {
+//            this.databaseController.addOrderToHandle(closedOrder);
+//        }
         return closedOrder != null;
     }
 
     public Map<Long, Ordine> displayOrders() {
         if (this.checkType(this.currentUser) == 0)
             return ((Cliente) this.currentUser).getOrderHistory();
-        if (this.checkType(this.currentUser) == 1)
-            return databaseController.getAllOrders();
+        if (this.checkType(this.currentUser) == 1) {
+            Map<Long,Ordine> output = new HashMap<>();
+            CriteriaQuery<Ordine> query = em.getCriteriaBuilder().createQuery(Ordine.class);
+            query.select(query.from(Ordine.class));
+            List<Ordine> allOrders = this.em.createQuery(query).getResultList();
+            for (Ordine current : allOrders)
+                output.put(current.getId(),current);
+        }
         return null;
     }
 
     public Map<Long, Ordine> displayNotValidatedOrders() {
-        return databaseController.getOrders();
+        Map<Long,Ordine> first = this.displayOrders();
+        Map<Long,Ordine> output = new HashMap<>();
+        for (Ordine current : first.values()){
+            if(current.getState() == 1)
+                output.put(current.getId(), current);
+        }
+        return output;
     }
 
     public Utente getCurrentUser() {
@@ -187,11 +192,17 @@ public class MainController {
     }
 
     public Cliente getClientFromId(String email) {
-        return (Cliente) this.databaseController.checkUser(email);
+//        return (Cliente) this.databaseController.checkUser(email);
+        Cliente output = this.em.find(Cliente.class,email);
+        return output;
     }
 
     public Ordine validateOrder(Long id) {
-        return this.databaseController.evadiOrdine(id);
+//        return this.databaseController.evadiOrdine(id);
+        Ordine toValidate = this.em.find(Ordine.class, id);
+        toValidate.validate();
+        return toValidate;
+
     }
 
     public void openEntityManager() {

@@ -25,14 +25,14 @@ public class Ordine {
     @JoinColumn(name = "order_prodotto")
     private List<RigaOrdine> righeordine;
     @Column(nullable=false)
-    private Boolean isClosed;
+    private Integer state;
     @Column(nullable=false)
     @ManyToOne
     private Cliente ordersClient;
 
     public Ordine(Long id) {
         this.id = id;
-        this.isClosed = false;
+        this.state = 0;
     }
 
     public Ordine() {
@@ -69,12 +69,12 @@ public class Ordine {
         this.name = name;
     }
 
-    public Boolean getIsClosed() {
-        return isClosed;
+    public Integer getState() {
+        return state;
     }
 
-    public void setIsClosed(Boolean isClosed) {
-        this.isClosed = isClosed;
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public Date getDataCreazione() {
@@ -103,7 +103,12 @@ public class Ordine {
     }
 
     public Boolean close(){
-        this.isClosed = true;
+        this.state = 1;
+        return true;
+    }
+
+    public Boolean validate(){
+        this.state = 2;
         return true;
     }
 }
