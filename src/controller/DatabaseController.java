@@ -91,9 +91,17 @@ public class DatabaseController {
         else return false;
     }
 
-    public Prodotto addProductToCatalog(String name, int price, int quantity, String img, String description) {
-        Prodotto productAdded = this.catalog.addProduct(name, price, quantity, img, description);
-        return productAdded;
+    public Prodotto addProductToCatalog(String name, int price, int quantity,String code, String img, String description, EntityManager em) {
+        /*Prodotto productAdded = this.catalog.addProduct(name, price, quantity, img, description);*/
+        Prodotto productCreated = new Prodotto();
+        productCreated.setName(name);
+        productCreated.setDescription(description);
+        productCreated.setPrice(price);
+        productCreated.setQuantity(quantity);
+        productCreated.setImg(img);
+        productCreated.setCode(code);
+        em.persist(productCreated);
+        return productCreated;
     }
 
     public Map<Long, Ordine> getOrders(){

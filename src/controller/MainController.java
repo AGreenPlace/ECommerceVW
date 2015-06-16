@@ -68,7 +68,6 @@ public class MainController {
         /*this.currentProduct = databaseController.getProductFromCatalog(id);*/
         this.currentProduct = this.em.find(Prodotto.class, id);
         return currentProduct;
-
     }
 
     public String login(String email, String password) {
@@ -161,8 +160,8 @@ public class MainController {
     }
 
     public Prodotto addProductToCatalog(String name, int price, int quantity,String code, String img, String description) {
-       /* Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img, description);*/
-        Prodotto productCreated = new Prodotto();
+       Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity,code, img, description, this.em);
+       /* Prodotto productCreated = new Prodotto();
         productCreated.setName(name);
         productCreated.setDescription(description);
         productCreated.setPrice(price);
@@ -170,8 +169,10 @@ public class MainController {
         productCreated.setImg(img);
         productCreated.setCode(code);
         this.em.persist(productCreated);
+        return productCreated;*/
         return productCreated;
     }
+
 
     public Integer checkCurrentUser() {
         return this.checkType(this.currentUser);
