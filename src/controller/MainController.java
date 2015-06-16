@@ -45,9 +45,7 @@ public class MainController {
         temp1.setQuantity(62);
         temp1.setPrice(103);
         this.em.persist(temp1);*/
-        Utente amministratore= new Amministratore();
-        amministratore.setEmail("luca@luca.com");
-        amministratore.setPassword("luca");
+        Utente amministratore= new Amministratore("luca@luca.com","luca");
         amministratore.setNome("Luca");
         amministratore.setCognome("Wissel");
         amministratore.setUsername("lukeskywiss");
