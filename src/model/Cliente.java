@@ -23,7 +23,7 @@ public class Cliente extends Utente {
     private String cap;
     @Column(nullable=false)
     private String location;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     private Ordine currentOrder;
     @OneToMany(mappedBy = "ordersClient", fetch =FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Ordine> orderHistory;

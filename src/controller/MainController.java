@@ -43,12 +43,12 @@ public class MainController {
         temp1.setDescription("un parafulmini molto csotoso");
         temp1.setQuantity(62);
         temp1.setPrice(103);
-        this.em.persist(temp1);*/
-//        Amministratore amm = new Amministratore("luca@luca.com", "luca");
-//        amm.setNome("Luca");
-//        amm.setCognome("Wissel");
-//        amm.setUsername("lukeskywiss");
-//        this.em.persist(amm);
+        this.em.persist(temp1);
+        Amministratore amm = new Amministratore("luca@luca.com", "luca");
+        amm.setNome("Luca");
+        amm.setCognome("Wissel");
+        amm.setUsername("lukeskywiss");
+        this.em.persist(amm);*/
         CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(model.Prodotto.class);
         cq.select(cq.from(model.Prodotto.class));
         List<Prodotto> products = em.createQuery(cq).getResultList();
