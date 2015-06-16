@@ -118,6 +118,7 @@ public class MainController {
 //        if (closedOrder != null) {
 //            this.databaseController.addOrderToHandle(closedOrder);
 //        }
+        this.updateOrder(closedOrder);
         return closedOrder != null;
     }
 
@@ -210,4 +211,29 @@ public class MainController {
         this.em = emf.createEntityManager();
 
     }
+
+    private void updateOrder(Ordine o){
+        em.merge(o);
+    }
+
+    private void updateClient(Cliente c){
+        em.merge(c);
+    }
+
+    private void updateProduct(Prodotto p){
+        em.merge(p);
+    }
+
+    private void removeOrder(Ordine o){
+        em.remove(o);
+    }
+
+    private void removeClient(Cliente c){
+        em.remove(c);
+    }
+
+    private void removeProduct(Prodotto p){
+        em.remove(p);
+    }
+
 }
