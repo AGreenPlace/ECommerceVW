@@ -14,7 +14,10 @@
     </ui:repeat>
     <c:if test="${orderViewController.currentOrder.state==0}">
         <h:form>
-            <h:commandButton value="Close Order" action="#{orderViewController.closeOrder}"/>
+            <h:commandButton value="Close Order" action="#{orderViewController.closeOrder()}">
+                <f:param value="${orderViewController.currentOrder}"/>
+                <f:param value="${orderViewController.idProdottoDaAggiungere}"/>
+            </h:commandButton>
         </h:form>
     </c:if>
     <c:if test="${orderViewController.mainController.checkCurrentUser()==0}">
