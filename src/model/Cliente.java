@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Entity
 @DiscriminatorValue("C")
+@Table(name="Clienti")
 public class Cliente extends Utente {
     @Column(nullable=false)
     private String nation;

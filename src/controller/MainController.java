@@ -45,11 +45,11 @@ public class MainController {
         temp1.setQuantity(62);
         temp1.setPrice(103);
         this.em.persist(temp1);*/
-        Utente amministratore= new Amministratore("luca@luca.com","luca");
+/*        Amministratore amministratore= new Amministratore("luca@luca.com","luca");
         amministratore.setNome("Luca");
         amministratore.setCognome("Wissel");
         amministratore.setUsername("lukeskywiss");
-        this.em.persist(amministratore);
+        this.em.persist(amministratore);*/
         CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(model.Prodotto.class);
         cq.select(cq.from(model.Prodotto.class));
         List<Prodotto> products = em.createQuery(cq).getResultList();

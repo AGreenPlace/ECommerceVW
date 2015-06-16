@@ -8,7 +8,7 @@ import java.util.*;
  * Created by Andrea on 27/05/15.
  */
 @Entity
-@Inheritance
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="utente_tipo")
 @Table(name="utente")
 public abstract class Utente {
