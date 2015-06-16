@@ -160,8 +160,16 @@ public class MainController {
         return session;
     }
 
-    public Prodotto addProductToCatalog(String name, int price, int quantity, String img, String description) {
-        Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img, description);
+    public Prodotto addProductToCatalog(String name, int price, int quantity,String code, String img, String description) {
+       /* Prodotto productCreated = databaseController.addProductToCatalog(name, price, quantity, img, description);*/
+        Prodotto productCreated = new Prodotto();
+        productCreated.setName(name);
+        productCreated.setDescription(description);
+        productCreated.setPrice(price);
+        productCreated.setQuantity(quantity);
+        productCreated.setImg(img);
+        productCreated.setCode(code);
+        this.em.persist(productCreated);
         return productCreated;
     }
 

@@ -16,12 +16,13 @@ public class InsertProductViewController {
     private String name;
     private int price;
     private int quantity;
+    private String code;
     private String img;
     private String description;
 
 
     public String addProduct(){
-        mainController.addProductToCatalog(name, price, quantity, img, description);
+        mainController.addProductToCatalog(name, price, quantity, code, img, description);
         return"AdministrationView";
     }
 
@@ -41,6 +42,13 @@ public class InsertProductViewController {
         this.price = price;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
     public int getQuantity() {
         return quantity;
     }
