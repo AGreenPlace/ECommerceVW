@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  * Created by Luca on 29/05/2015.
@@ -11,7 +8,11 @@ import javax.persistence.OneToOne;
 @Entity
 public class RigaOrdine {
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     @ManyToOne
     private Prodotto currentProduct;
     private Integer quantity;
@@ -43,4 +44,13 @@ public class RigaOrdine {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

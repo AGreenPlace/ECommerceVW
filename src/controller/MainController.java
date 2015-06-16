@@ -119,6 +119,7 @@ public class MainController {
 
 
     public Boolean closeOrder() {
+        this.em.merge(this.currentUser);
         Ordine closedOrder = ((Cliente) this.currentUser).closeOrder();
 //        if (closedOrder != null) {
 //            this.databaseController.addOrderToHandle(closedOrder);

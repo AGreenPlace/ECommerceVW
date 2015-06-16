@@ -25,7 +25,7 @@ public class Cliente extends Utente {
     private String location;
     @OneToOne
     private Ordine currentOrder;
-    @OneToMany(mappedBy = "ordersClient")
+    @OneToMany(mappedBy = "ordersClient", fetch =FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Ordine> orderHistory;
 
     
@@ -41,14 +41,15 @@ public class Cliente extends Utente {
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity){
         if(this.currentOrder== null) {
-            Boolean isAccetable = false;
+          /*  Boolean isAccetable = false;
             while (!isAccetable) {
-                Long idOrder = (long) (Math.random() * 100 + 1);
+                *//*Long idOrder = (long) (Math.random() * 100 + 1);*//*
                 if(this.orderHistory == null||!this.historyContainsId(idOrder)) {
                     this.currentOrder = new Ordine(idOrder);
                     isAccetable = true;
                 }
-            }
+            }*/
+            this.currentOrder= new Ordine();
         }
         Boolean productAdded = this.currentOrder.addProduct(prodotto, quantity);
         if (productAdded)

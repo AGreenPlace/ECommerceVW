@@ -11,6 +11,10 @@
         <p>
             <h:outputText value="${rigaOrdine.quantity}"/>
         </p>
+        <p>
+            <h:outputText value="${rigaOrdine.currentProduct.name}"/>
+        </p>
+
     </ui:repeat>
     <c:if test="${orderViewController.currentOrder.state==0}">
         <h:form>

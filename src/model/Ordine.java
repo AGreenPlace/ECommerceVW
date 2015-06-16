@@ -30,13 +30,10 @@ public class Ordine {
     @ManyToOne
     private Cliente ordersClient;
 
-    public Ordine(Long id) {
-        this.id = id;
+    public Ordine() {
         this.state = 0;
     }
 
-    public Ordine() {
-    }
 
     public Boolean addProduct(Prodotto prodotto, Integer quantity) {
         if (this.righeordine == null)
