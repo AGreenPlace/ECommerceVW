@@ -22,7 +22,7 @@
         <h:form>
             <h:commandButton value="Display Orders" action="HistoryOrders"/>
         </h:form>
-     <ui:repeat value="${controller.catalogViewController.displayCatalog()}" var="prodotto" >
+     <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
          <h:form>
 
              <div id="container">
@@ -30,7 +30,7 @@
                     <img src="${prodotto.img}" alt="C:\Users\Luca\IdeaProjects\ECommerceVW\web\images\noImage.jpeg"/>
                  </div>
                      <div class="textContainer">
-                         <h:commandLink action="#{productDetailViewController.initWithId(prodotto.code)}">
+                         <h:commandLink action="#{productDetailViewController.initWithId(prodotto.id)}">
                          <p>Nome: ${prodotto.name}</p>
                          <p>Disponibilità: ${prodotto.quantity}</p>
                          </h:commandLink>

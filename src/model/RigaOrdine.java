@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -9,8 +10,9 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class RigaOrdine {
-    @OneToOne
+
     @Id
+    @ManyToOne
     private Prodotto currentProduct;
     private Integer quantity;
 

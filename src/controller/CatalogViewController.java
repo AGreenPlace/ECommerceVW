@@ -3,6 +3,7 @@ package controller;
 import model.Prodotto;
 import view.ProductDescriptor;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.naming.InitialContext;
@@ -26,11 +27,16 @@ public class CatalogViewController{
     private String catalogHTMLDescription;
 
     public List<Prodotto> displayCatalog(){
-        List<Prodotto> products = mainController.getProductsInCatalog();
+        products = mainController.getProductsInCatalog();
 
         this.generateHtmlFromProducts(products);
         return products;
-    }
+    }/*
+
+    @PostConstruct
+    public void init(){
+        products = mainController.getProductsInCatalog();
+    }*/
 
     private String generateHtml(String inputData){
         String output = "<h1>Catalogo</h1>" +"\n"+

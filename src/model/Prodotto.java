@@ -41,6 +41,10 @@ public class Prodotto {
     }
 
     //GETTERS AND SETTERS
+    public Long getId(){
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -112,7 +116,6 @@ public class Prodotto {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + price;
         result = 31 * result + quantity;
-        result = 31 * result + img.hashCode();
         return result;
     }
 }

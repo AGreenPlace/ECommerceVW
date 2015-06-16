@@ -21,7 +21,8 @@ public class Ordine {
     @Column(nullable=false)
     private Date dataCreazione;
     private Date dataSpedizione;
-    @OneToMany
+    @OneToMany(fetch =FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "order_prodotto")
     private List<RigaOrdine> righeordine;
     @Column(nullable=false)
     private Boolean isClosed;

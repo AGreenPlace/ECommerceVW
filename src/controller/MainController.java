@@ -38,12 +38,20 @@ public class MainController {
     public List<Prodotto> getProductsInCatalog() {
         /*openEntityManager();
         return databaseController.getProductsInCatalog(this.em);*/
-        Prodotto temp1 = new Prodotto();
-        temp1.setCode("1");
-        temp1.setName("Ombrello");
-        temp1.setDescription("Un fottuto Ombrello");
-        temp1.setQuantity(10);
-        this.em.persist(temp1);
+/*        Prodotto temp1 = new Prodotto();
+        temp1.setCode("236231023");
+        temp1.setName("ParaFulmini");
+        temp1.setDescription("un parafulmini molto csotoso");
+        temp1.setQuantity(62);
+        temp1.setPrice(103);
+        this.em.persist(temp1);*/
+        Utente amministratore= new Amministratore();
+        amministratore.setEmail("luca@luca.com");
+        amministratore.setPassword("luca");
+        amministratore.setNome("Luca");
+        amministratore.setCognome("Wissel");
+        amministratore.setUsername("lukeskywiss");
+        this.em.persist(amministratore);
         CriteriaQuery<Prodotto> cq = em.getCriteriaBuilder().createQuery(model.Prodotto.class);
         cq.select(cq.from(model.Prodotto.class));
         List<Prodotto> products = em.createQuery(cq).getResultList();
@@ -59,13 +67,15 @@ public class MainController {
     }
 
     public Prodotto getProductFromCatalog(String id) {
-        this.currentProduct = databaseController.getProductFromCatalog(id);
+        /*this.currentProduct = databaseController.getProductFromCatalog(id);*/
+        this.currentProduct = this.em.find(Prodotto.class, id);
         return currentProduct;
 
     }
 
     public String login(String email, String password) {
-        Utente currentUser = databaseController.checkUser(email);
+      /*  Utente currentUser = databaseController.checkUser(email);*/
+        Utente currentUser = this.em.find(Utente.class, email);
         if (currentUser == null) {
             return "";
         }
@@ -96,8 +106,16 @@ public class MainController {
         else {
             Boolean userWasCreated = false;
             try {
-                Utente cliente = new Cliente(email, password);
+                Cliente cliente = new Cliente(email, password);
+                cliente.setCognome(cognome);
+                cliente.setNome(nome);
+                cliente.setUsername(username);
+                cliente.setCity(city);
+                cliente.setCap(cap);
+                cliente.setLocation(location);
+                cliente.setNation(nation);
                 em.persist(cliente);
+                return true;
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
