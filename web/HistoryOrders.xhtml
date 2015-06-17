@@ -4,15 +4,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
-<f:view>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/css.css"/>
+</head>
+<h:body>
+<f:view><h:form>
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li>
+
+                    <h:commandLink value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
+                </li>
+                <li>
+                    <h:commandLink value="Signup" action="SignUpView"/>
+                </li>
+                <li>
+                    <h:commandLink value="Display Orders" action="HistoryOrders"/>
+                </li>
+            </ul>
+            <p class="navbar-text navbar-right">
+                <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
+            </p>
+        </div>
+    </div>
+</h:form>
         <ui:repeat value="${historyOrdersViewController.getHistoryOrder()}" var="ordine">
            <h:form>
-               <h:commandLink action="#{orderViewController.initWithId(ordine.id)}">
-                    <p>Ordine: ${ordine.id}</p>
-                    <p>Data Creazione: ${ordine.dataCreazione}</p>
-                   <f:param name="sender" value="HistoryOrders.xhtml"/>
-               </h:commandLink>
+               <div class="row">
+                <div class="thumbnail">
+                       <h:commandLink action="#{orderViewController.initWithId(ordine.id)}">
+                           <div class="caption">
+                                <p>Ordine: ${ordine.id}</p>
+                                <p>Data Creazione: ${ordine.dataCreazione}</p>
+                           </div>
+                           <f:param name="sender" value="HistoryOrders.xhtml"/>
+                       </h:commandLink>
+                </div>
+               </div>
             </h:form>
         </ui:repeat>
 </f:view>
