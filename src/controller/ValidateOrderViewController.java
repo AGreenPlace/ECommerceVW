@@ -24,9 +24,10 @@ public class ValidateOrderViewController {
     }
 
     public String shipOrder(){
-        System.out.println(this.orderId);
-        this.mainController.validateOrder(this.orderId);
-        System.out.println(this.orderId);
+
+        Ordine ordine= this.mainController.validateOrder(this.orderId);
+        if (ordine ==null)
+            return "ValidateOrderView.xhtml";
         return "AdministrationView.xhtml";
 
     }

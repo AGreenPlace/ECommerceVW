@@ -9,12 +9,10 @@
 <f:view>
     <ui:repeat value="${orderViewController.currentOrder.righeordine}" var="rigaOrdine">
         <p>
+            <h:outputText value="${rigaOrdine.currentProduct.name}"/>
             <h:outputText value="${rigaOrdine.quantity}"/>
         </p>
 
-        <p>
-            <h:outputText value="${rigaOrdine.currentProduct.name}"/>
-        </p>
 
     </ui:repeat>
     <c:if test="${orderViewController.currentOrder.state==0}">

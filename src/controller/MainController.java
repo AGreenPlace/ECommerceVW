@@ -223,6 +223,14 @@ public class MainController {
 //        return this.databaseController.evadiOrdine(id);
         Ordine toValidate = this.em.find(Ordine.class, id);
         toValidate.validate();
+        for (RigaOrdine current:toValidate.getRigheordine()){
+            Prodotto prodotto = current.getCurrentProduct();
+            if(prodotto.getQuantity()>= current.getQuantity()) {
+                prodotto.setQuantity(prodotto.getQuantity() - current.getQuantity());
+                this.em.merge(prodotto);
+            }
+            else return null;
+        }
         em.merge(toValidate);
         return toValidate;
 
