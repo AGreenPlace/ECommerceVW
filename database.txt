@@ -1,0 +1,360 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.4.0
+-- Dumped by pg_dump version 9.4.0
+-- Started on 2015-06-17 17:33:54
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 2020 (class 1262 OID 12135)
+-- Dependencies: 2019
+-- Name: postgres; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON DATABASE postgres IS 'default administrative connection database';
+
+
+--
+-- TOC entry 176 (class 3079 OID 11855)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2023 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 173 (class 1259 OID 16389)
+-- Name: Città; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Città" (
+    "Nome" character(50),
+    "Prov" character(30),
+    codice character(20) NOT NULL
+);
+
+
+ALTER TABLE "Città" OWNER TO postgres;
+
+--
+-- TOC entry 2024 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN "Città"."Nome"; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Città"."Nome" IS 'Nome città';
+
+
+--
+-- TOC entry 2025 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN "Città"."Prov"; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Città"."Prov" IS 'Provincia della citta';
+
+
+--
+-- TOC entry 2026 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN "Città".codice; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Città".codice IS 'codice della città';
+
+
+--
+-- TOC entry 172 (class 1259 OID 16384)
+-- Name: Persona; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Persona" (
+    "Nome" character(50),
+    "Cognome" character(100),
+    "Nascita" date,
+    "Luogo" character(100),
+    "CodiceFiscale" character(30) NOT NULL
+);
+
+
+ALTER TABLE "Persona" OWNER TO postgres;
+
+--
+-- TOC entry 2027 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: COLUMN "Persona"."Nome"; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Persona"."Nome" IS 'Il nome della persona';
+
+
+--
+-- TOC entry 2028 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: COLUMN "Persona"."Cognome"; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Persona"."Cognome" IS 'il cognome della persona';
+
+
+--
+-- TOC entry 2029 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: COLUMN "Persona"."Nascita"; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Persona"."Nascita" IS 'giorno mese anno di nascita';
+
+
+--
+-- TOC entry 2030 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: COLUMN "Persona"."Luogo"; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Persona"."Luogo" IS 'Luogo di nascita';
+
+
+--
+-- TOC entry 2031 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: COLUMN "Persona"."CodiceFiscale"; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Persona"."CodiceFiscale" IS 'Codicefiscale';
+
+
+--
+-- TOC entry 175 (class 1259 OID 16397)
+-- Name: Provincia; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Provincia" (
+    codice character(20) NOT NULL,
+    nome character(20),
+    reg character(20)
+);
+
+
+ALTER TABLE "Provincia" OWNER TO postgres;
+
+--
+-- TOC entry 2032 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: COLUMN "Provincia".codice; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Provincia".codice IS 'codice della provincia';
+
+
+--
+-- TOC entry 2033 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: COLUMN "Provincia".nome; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Provincia".nome IS 'nome della provincia';
+
+
+--
+-- TOC entry 2034 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: COLUMN "Provincia".reg; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Provincia".reg IS 'codice della regione di appartenenza';
+
+
+--
+-- TOC entry 174 (class 1259 OID 16392)
+-- Name: Regione; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Regione" (
+    codice character(20) NOT NULL,
+    nome character(50)
+);
+
+
+ALTER TABLE "Regione" OWNER TO postgres;
+
+--
+-- TOC entry 2035 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: COLUMN "Regione".codice; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Regione".codice IS 'codice della regione';
+
+
+--
+-- TOC entry 2036 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: COLUMN "Regione".nome; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN "Regione".nome IS 'nome della regione';
+
+
+--
+-- TOC entry 2012 (class 0 OID 16389)
+-- Dependencies: 173
+-- Data for Name: Città; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "Città" ("Nome", "Prov", codice) FROM stdin;
+Itri                                              	001                           	00001               
+Fondi                                             	001                           	00002               
+Formia                                            	001                           	00003               
+Gaeta                                             	001                           	00004               
+\.
+
+
+--
+-- TOC entry 2011 (class 0 OID 16384)
+-- Dependencies: 172
+-- Data for Name: Persona; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "Persona" ("Nome", "Cognome", "Nascita", "Luogo", "CodiceFiscale") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2014 (class 0 OID 16397)
+-- Dependencies: 175
+-- Data for Name: Provincia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "Provincia" (codice, nome, reg) FROM stdin;
+001                 	Latina              	01                  
+002                 	Rieti               	01                  
+003                 	Viterbo             	01                  
+004                 	Roma                	01                  
+005                 	Frosinone           	01                  
+006                 	Napoli              	02                  
+007                 	Salerno             	02                  
+008                 	Avellino            	02                  
+009                 	Milano              	03                  
+010                 	Varese              	03                  
+\.
+
+
+--
+-- TOC entry 2013 (class 0 OID 16392)
+-- Dependencies: 174
+-- Data for Name: Regione; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "Regione" (codice, nome) FROM stdin;
+01                  	Lazio                                             
+02                  	Campania                                          
+03                  	Lombardia                                         
+04                  	Puglia                                            
+\.
+
+
+--
+-- TOC entry 1894 (class 2606 OID 16413)
+-- Name: Città_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Città"
+    ADD CONSTRAINT "Città_pkey" PRIMARY KEY (codice);
+
+
+--
+-- TOC entry 1892 (class 2606 OID 16388)
+-- Name: Persona_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Persona"
+    ADD CONSTRAINT "Persona_pkey" PRIMARY KEY ("CodiceFiscale");
+
+
+--
+-- TOC entry 1898 (class 2606 OID 16406)
+-- Name: Provincia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Provincia"
+    ADD CONSTRAINT "Provincia_pkey" PRIMARY KEY (codice);
+
+
+--
+-- TOC entry 1896 (class 2606 OID 16396)
+-- Name: Regione_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Regione"
+    ADD CONSTRAINT "Regione_pkey" PRIMARY KEY (codice);
+
+
+--
+-- TOC entry 1900 (class 2606 OID 16407)
+-- Name: Città_Prov_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "Città"
+    ADD CONSTRAINT "Città_Prov_fkey" FOREIGN KEY ("Prov") REFERENCES "Provincia"(codice);
+
+
+--
+-- TOC entry 1899 (class 2606 OID 16414)
+-- Name: Persona_Luogo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "Persona"
+    ADD CONSTRAINT "Persona_Luogo_fkey" FOREIGN KEY ("Luogo") REFERENCES "Città"(codice);
+
+
+--
+-- TOC entry 1901 (class 2606 OID 16400)
+-- Name: Provincia_reg_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "Provincia"
+    ADD CONSTRAINT "Provincia_reg_fkey" FOREIGN KEY (reg) REFERENCES "Regione"(codice);
+
+
+--
+-- TOC entry 2022 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-06-17 17:33:55
+
+--
+-- PostgreSQL database dump complete
+--
+
