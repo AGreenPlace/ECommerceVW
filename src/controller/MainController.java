@@ -29,7 +29,7 @@ public class MainController {
 
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity) {
-        Cliente c  = this.em.find(Cliente.class, this.currentUser.getEmail());
+        Cliente c  = this.em.find(Cliente.class, this.getCurrentUser().getEmail());
         Ordine output =  c.addProductToOrder(prodotto, quantity);
         this.em.persist(c);
         return output;
@@ -84,7 +84,7 @@ public class MainController {
             passIsCorrect = false;
         }
         if (passIsCorrect) {
-            this.currentUser = currentUser;
+            this.setCurrentUser(currentUser);
             if (currentUser.getClass().equals(Cliente.class)) {
                 return (String) getSession().getAttribute("previousPagePath");
             }
@@ -123,8 +123,8 @@ public class MainController {
 
     public Boolean closeOrder() {
 
-        this.currentUser= this.em.find(Utente.class, this.currentUser.getEmail());
-        Ordine closedOrder = ((Cliente) this.currentUser).closeOrder(this.em);
+        this.setCurrentUser(this.em.find(Utente.class, this.getCurrentUser().getEmail()));
+        Ordine closedOrder = ((Cliente) this.getCurrentUser()).closeOrder(this.em);
 //        if (closedOrder != null) {
 //            this.databaseController.addOrderToHandle(closedOrder);
 //        }
@@ -133,8 +133,8 @@ public class MainController {
     }
 
     public Map<Long, Ordine> displayOrders() {
-        if (this.checkType(this.currentUser) == 0) {
-            List<Ordine> orderList = ((Cliente) this.currentUser).getOrderHistory();
+        if (this.checkType(this.getCurrentUser()) == 0) {
+            List<Ordine> orderList = ((Cliente) this.getCurrentUser()).getOrderHistory();
             System.out.println("orderList" + orderList.toString());
             Map<Long,Ordine> output = new HashMap<>();
             for (Ordine current: orderList)
@@ -143,7 +143,7 @@ public class MainController {
             System.out.println("output" + output.toString());
             return output;
         }
-        if (this.checkType(this.currentUser) == 1) {
+        if (this.checkType(this.getCurrentUser()) == 1) {
             Map<Long,Ordine> output = new HashMap<>();
             CriteriaQuery<Ordine> query = em.getCriteriaBuilder().createQuery(Ordine.class);
             query.select(query.from(Ordine.class));
@@ -167,11 +167,11 @@ public class MainController {
     }
 
     public Utente getCurrentUser() {
-        return currentUser;
+        return (Utente)getSession().getAttribute("currentUser");
     }
 
     public void setCurrentUser(Utente currentUser) {
-        this.currentUser = currentUser;
+        this.getSession().setAttribute("currentUser",currentUser);
     }
 
 
@@ -201,7 +201,7 @@ public class MainController {
 
 
     public Integer checkCurrentUser() {
-        return this.checkType(this.currentUser);
+        return this.checkType(this.getCurrentUser());
     }
 
     private Integer checkType(Utente currentUser) {
