@@ -29,7 +29,10 @@ public class MainController {
 
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity) {
-        return ((Cliente) currentUser).addProductToOrder(prodotto, quantity);
+        Cliente c  = this.em.find(Cliente.class, this.currentUser.getEmail());
+        Ordine output =  c.addProductToOrder(prodotto, quantity);
+        this.em.persist(c);
+        return output;
     }
 
     public String consultCatalog() {
@@ -119,8 +122,9 @@ public class MainController {
 
 
     public Boolean closeOrder() {
-        this.em.merge(this.currentUser);
-        Ordine closedOrder = ((Cliente) this.currentUser).closeOrder();
+
+        this.currentUser= this.em.find(Utente.class, this.currentUser.getEmail());
+        Ordine closedOrder = ((Cliente) this.currentUser).closeOrder(this.em);
 //        if (closedOrder != null) {
 //            this.databaseController.addOrderToHandle(closedOrder);
 //        }
@@ -131,9 +135,12 @@ public class MainController {
     public Map<Long, Ordine> displayOrders() {
         if (this.checkType(this.currentUser) == 0) {
             List<Ordine> orderList = ((Cliente) this.currentUser).getOrderHistory();
+            System.out.println("orderList" + orderList.toString());
             Map<Long,Ordine> output = new HashMap<>();
             for (Ordine current: orderList)
                 output.put(current.getId(),current);
+
+            System.out.println("output" + output.toString());
             return output;
         }
         if (this.checkType(this.currentUser) == 1) {
@@ -143,6 +150,8 @@ public class MainController {
             List<Ordine> allOrders = this.em.createQuery(query).getResultList();
             for (Ordine current : allOrders)
                 output.put(current.getId(),current);
+
+            return output;
         }
         return null;
     }
@@ -196,6 +205,7 @@ public class MainController {
     }
 
     private Integer checkType(Utente currentUser) {
+        System.out.println(currentUser);
         if (currentUser.getClass().equals(Cliente.class))
             return 0;
         if (currentUser.getClass().equals(Amministratore.class))

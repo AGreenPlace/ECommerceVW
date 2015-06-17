@@ -16,18 +16,18 @@ public class Ordine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
+
     private String name;
     @Column(nullable=false)
     private Date dataCreazione;
     private Date dataSpedizione;
-    @OneToMany(fetch =FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_prodotto")
+    @OneToMany(fetch =FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "order")
     private List<RigaOrdine> righeordine;
     @Column(nullable=false)
     private Integer state;
     @Column(nullable=false)
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     private Cliente ordersClient;
 
     public Ordine() {

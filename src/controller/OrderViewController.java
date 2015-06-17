@@ -23,11 +23,13 @@ public class OrderViewController {
 
     public String initWithId(Long id){
         this.currentOrder = this.mainController.getCurrentOrderFromHistory(id);
+        System.out.println("currentOrder" + this.currentOrder.getRigheordine());
         return "OrderView.xhtml";
     }
 
     public String closeOrder(){
         String output;
+
         Boolean orderIsClosed = this.mainController.closeOrder();
         if(orderIsClosed)
             output = "index.xhtml";

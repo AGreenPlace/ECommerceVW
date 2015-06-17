@@ -1,10 +1,7 @@
 package model;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Luca on 10/06/2015.
@@ -13,7 +10,7 @@ import java.util.Map;
 
 @Entity
 @DiscriminatorValue("C")
-@Table(name="Clienti")
+@Table(name="clienti")
 public class Cliente extends Utente {
     @Column(nullable=false)
     private String nation;
@@ -23,9 +20,9 @@ public class Cliente extends Utente {
     private String cap;
     @Column(nullable=false)
     private String location;
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Ordine currentOrder;
-    @OneToMany(mappedBy = "ordersClient", fetch =FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "ordersClient", fetch =FetchType.EAGER, cascade = {CascadeType.PERSIST})
     private List<Ordine> orderHistory;
 
     
@@ -41,26 +38,23 @@ public class Cliente extends Utente {
 
     public Ordine addProductToOrder(Prodotto prodotto, Integer quantity){
         if(this.currentOrder== null) {
-          /*  Boolean isAccetable = false;
-            while (!isAccetable) {
-                *//*Long idOrder = (long) (Math.random() * 100 + 1);*//*
-                if(this.orderHistory == null||!this.historyContainsId(idOrder)) {
-                    this.currentOrder = new Ordine(idOrder);
-                    isAccetable = true;
-                }
-            }*/
             this.currentOrder= new Ordine();
         }
         Boolean productAdded = this.currentOrder.addProduct(prodotto, quantity);
-        if (productAdded)
+        if (productAdded) {
+            this.currentOrder.setDataCreazione(Calendar.getInstance().getTime());
+            this.currentOrder.setOrdersClient(this);
+            this.currentOrder.setState(0);
             return this.currentOrder;
+        }
         return null;
 
     }
 
-    public Ordine closeOrder() {
+    public Ordine closeOrder(EntityManager em) {
         if (this.orderHistory == null)
             this.orderHistory = new LinkedList<>();
+        this.currentOrder= em.find(Ordine.class,this.currentOrder.getId() );
         this.orderHistory.add(this.currentOrder);
         Ordine output= this.currentOrder;
         output.setOrdersClient(this);
