@@ -13,31 +13,27 @@
 </head>
 <h:body>
 <f:view>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li>
-                    <h:form>
-                        <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
-                    </h:form>
-                </li>
-                <li>
-                    <h:form>
-                        <h:commandButton value="Signup" action="SignUpView"/>
-                    </h:form>
-                </li>
-                <li>
-                    <h:form>
-                        <h:commandButton value="Display Orders" action="HistoryOrders"/>
-                    </h:form>
-                </li>
-            </ul>
-            <p class="navbar-text navbar-right">
-                <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
-            </p>
-        </div>
-    </nav>
+    <h:form>
+        <div class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
 
+                        <h:commandLink value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
+                    </li>
+                    <li>
+                        <h:commandLink value="Signup" action="SignUpView"/>
+                    </li>
+                    <li>
+                        <h:commandLink value="Display Orders" action="HistoryOrders"/>
+                    </li>
+                </ul>
+                <p class="navbar-text navbar-right">
+                    <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
+                </p>
+            </div>
+        </div>
+    </h:form>
     <div class="row">
         <div class="thumbnail">
             <img class="productDetailImg" src="${productDetailViewController.currentProd.img}"/>

@@ -11,24 +11,19 @@
     <link rel="stylesheet" type="text/css" href="css/css.css"/>
 </head>
 <h:body>
-    <f:view>
+    <f:view><h:form>
         <div class="navbar navbar-inverse">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li>
-                        <h:form>
+
                             <h:commandLink value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
-                        </h:form>
                     </li>
                     <li>
-                        <h:form>
                             <h:commandLink value="Signup" action="SignUpView"/>
-                        </h:form>
                     </li>
                     <li>
-                        <h:form>
                             <h:commandLink value="Display Orders" action="HistoryOrders"/>
-                        </h:form>
                     </li>
                 </ul>
                 <p class="navbar-text navbar-right">
@@ -36,7 +31,7 @@
                 </p>
             </div>
         </div>
-
+       </h:form>
 
 
         <!--<h:form>-->
