@@ -6,14 +6,52 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/css.css"/>
+</head>
+<h:form>
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li>
+
+                    <h:commandLink value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
+                </li>
+                <li>
+                    <h:commandLink value="Signup" action="SignUpView"/>
+                </li>
+                <li>
+                    <h:commandLink value="Display Orders" action="HistoryOrders"/>
+                </li>
+            </ul>
+            <p class="navbar-text navbar-right">
+                <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
+            </p>
+        </div>
+    </div>
+</h:form>
+<h:body>
 <f:view>
+    <h2 style="text-align: center">ORDER CODE:<h:outputText value="${orderViewController.currentOrder.id}"/></h2>
     <ui:repeat value="${orderViewController.currentOrder.righeordine}" var="rigaOrdine">
-        <p>
-            <h:outputText value="${rigaOrdine.currentProduct.name}"/>
-            <h:outputText value="${rigaOrdine.quantity}"/>
-        </p>
+        <h:form>
+            <div class="row">
 
-
+                <div class="thumbnail">
+                        <div class="col-md-2">
+                            <img class="productCatalogImg" src="${rigaOrdine.currentProduct.img}"/>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="caption">
+                                <h3> <h:outputText value="${rigaOrdine.currentProduct.name}"/></h3>
+                                <div class="catalogProductDescription"><p>${rigaOrdine.currentProduct.description}</p></div>
+                                <ins><p>Quantity Ordered:</p>> <h:outputText value="${rigaOrdine.quantity}"/></ins>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </h:form>
     </ui:repeat>
     <c:if test="${orderViewController.currentOrder.state==0}">
         <h:form>
@@ -48,4 +86,5 @@
             </h:commandButton>
         </h:form>
 </f:view>
+</h:body>
 </html>
