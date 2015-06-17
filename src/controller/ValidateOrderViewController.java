@@ -15,7 +15,7 @@ import java.util.List;
 public class ValidateOrderViewController {
     @EJB
     private MainController mainController;
-    @ManagedProperty(value ="#{param.orderId}")
+    @ManagedProperty(value ="#{param.id}")
     private Long orderId;
 
     public List<Ordine> getInvalidateOrders(){
@@ -23,8 +23,10 @@ public class ValidateOrderViewController {
         return orders;
     }
 
-    public String validateOrder(){
+    public String shipOrder(){
+        System.out.println(this.orderId);
         this.mainController.validateOrder(this.orderId);
+        System.out.println(this.orderId);
         return "AdministrationView.xhtml";
 
     }

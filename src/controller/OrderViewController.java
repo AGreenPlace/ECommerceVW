@@ -96,10 +96,14 @@ public class OrderViewController {
         this.sender = sender;
     }
 
-    public Boolean provaSender(){
+    public Integer provaSender(){
         if (this.sender.equals("ValidateOrderView")) {
-            return true;
+            return 1;
         }
-        return false;
+        return 0;
+    }
+
+    public boolean orderPorcoDio() {
+        return provaSender().equals(1) && mainController.checkCurrentUser()==1;
     }
 }

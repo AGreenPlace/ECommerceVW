@@ -223,6 +223,7 @@ public class MainController {
 //        return this.databaseController.evadiOrdine(id);
         Ordine toValidate = this.em.find(Ordine.class, id);
         toValidate.validate();
+        em.merge(toValidate);
         return toValidate;
 
     }
