@@ -47,7 +47,10 @@
     </div>
     <c:if test="${productDetailViewController.currentUserExists()}">
         <h:form>
-            <h:inputText value="#{orderViewController.quantity}"/>
+            <h:inputText value="#{orderViewController.quantity}"
+                                    required="true"
+                                    requiredMessage="Price is mandatory"
+                                    converterMessage="Price must be a number" id="quantity"/><h:message for="quantity" />
             <h:commandButton value="Add to Cart" action="#{orderViewController.addProductToOrder()}">
                 <f:param value="" name="sender"/>
                 <f:param name="idProdottoDaAggiungere" value="${productDetailViewController.currentProd.id}"/>

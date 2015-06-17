@@ -7,11 +7,27 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <f:view>
     <h:form>
-        <p>Name: </p><h:inputText value="#{insertProductViewController.name}"/>
-        <p>Description: </p><h:inputText value="#{insertProductViewController.description}"/>
-        <p>Code: </p><h:inputText value="#{insertProductViewController.code}"/>
-        <p>Price: </p><h:inputText value="#{insertProductViewController.price}"/>
-        <p>Quantity: </p><h:inputText value="#{insertProductViewController.quantity}"/>
+        <p>Name: </p><h:inputText value="#{insertProductViewController.name}"
+                                  required="true"
+                                  requiredMessage="Name is mandatory"
+                                  id="name"/><h:message for="name" />
+        <p>Description: </p><h:inputText value="#{insertProductViewController.description}"
+                                         required="true"
+                                         requiredMessage="Description is mandatory"
+                                         id="description"/><h:message for="description" />
+        <p>Code: </p><h:inputText value="#{insertProductViewController.code}"
+                                        required="true"
+                                        requiredMessage="Code is mandatory"
+                                        id="code"/><h:message for="code" />
+        <p>Price: </p><h:inputText value="#{insertProductViewController.price}"
+                                   required="true"
+                                   requiredMessage="Price is mandatory"
+                                   converterMessage="Price must be a number" id="price"/><h:message for="price" />
+
+        <p>Quantity: </p><h:inputText value="#{insertProductViewController.quantity}"
+                                      required="true"
+                                      requiredMessage="Quantity is mandatory"
+                                      converterMessage="Quantity must be a number" id="quantity"/><h:message for="quantity" />
         <p>Immagine: </p><h:inputText value="#{insertProductViewController.img}"/>
         <h:commandButton value="Insert Product" action="#{insertProductViewController.addProduct()}"/>
     </h:form>
