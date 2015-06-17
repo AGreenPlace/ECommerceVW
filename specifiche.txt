@@ -1,0 +1,82 @@
+ECommerceVW prevede:
+Caso d’uso 1:Consulta Catalogo
+	-Attore:utente (autenticato)
+	-Scenario di successo:
+		l’utente accede al sito e viene mostrato il catalogo dei prodotti
+		l’utente sceglie un prodotto di cui vedere le specifiche
+		il sistema mostra il dettaglio dei prodotto
+		l’Utente può ripetere i passi sopracitati un numero indefinito di volte.
+
+Caso d’uso 2:Iscrizione 
+	-Attore:utente(non registrato)
+	-Scenario di successo:
+		l’utente accede al sito e viene mostrato il catalogo dei prodotti
+		l’utente sceglie di registrarsi al sito
+		il sistema richiede di inserire tutti i dati utili per la registrazione
+		l’utente inserisce i dati
+		il sistema registra il nuovo Cliente
+
+Caso d’uso 3:Login
+	-Attore: Cliente(registrato)
+	-Scenario di successo:
+		l’utente accede al sito e viene mostrato il catalogo dei prodotti
+		l’utente sceglie di autenticarsi
+		il sistema mostra i campi da riempire con i dati personali dell’utente
+		l’utente inserisce i dati richiesti
+		il sistema autentica il Cliente
+
+Caso d’uso 4:Effettua Ordine
+	-Attore: Cliente(autenticato)
+	-Scenario di successo:
+		il Cliente vuole fare un acquisto
+		il Cliente consulta il catalogo dei prodotti
+		il Cliente seleziona il prodotto a cui è interessato
+		il sistema mostra le specifiche del prodotto
+		il Cliente inserisce la quantità che vuole acquistare
+		il sistema regista la rigaOrdine e mostra i prodotti inseriti nel carrello
+		il Cliente ripete i passi precedenti finché necessario
+		il Cliente decide di chiudere l’ordine
+		il sistema regista l’ordine chiuso
+
+Caso d’uso 5: Consulta Ordini
+	-Attore: Cliente(autenticato)
+	-Scenario di successo:
+		il cliente sceglie di visualizzare i suoi ordini
+		il sistema mostra un elenco degli ordini
+		il cliente seleziona l’ordine su cui vuole avere più informazioni
+		il sistema mostra i dettagli degli ordini
+		il cliente ripete i passi precedenti finché è necessario
+
+Caso d’uso 6: Inserisci prodotti nel catalogo
+	-Attore:Amministratore(autenticato)
+	-Scenario di successo:
+		l’amministratore accede al sistema
+		l’amministratore sceglie di inserire un nuovo prodotto nel catalogo
+		l’amministratore inserisce i dati del nuovo prodotto specificando i dettagli
+		il sistema registra il nuovo prodotto e lo inserisce nel catalogo
+		i punti precedenti possono essere ripetere finché necessario
+
+caso d’uso 7 : Recupera indirizzo cliente
+	-Attore: Amministratore(autenticato)
+	-Scenario di successo:
+		l’amministratore accede al sistema
+		l’amministratore sceglie di visualizzare tutti gli ordini
+		il sistema mostra tutti gli ordini
+		l’amministratore seleziona un ordine
+		il sistema mostra i dettagli di un ordine e l’utente che lo ha effettuato
+		l’amministratore clicca sul cliente e il sistema mostra i dettagli del cliente
+
+caso d’uso 8: Evasione Ordine
+	-Attore: Amministratore(autenticato)
+	-Scenario di successo:
+		l’amministratore accede al sistema
+		l’amministratore sceglie di evadere un ordine
+		il sistema mostra tutti gli ordini chiusi
+		l’amministratore seleziona un ordine
+		il sistema mostra i dettagli di un ordine e l’opzione di evaderlo
+		l’amministratore clicca sull’evasione
+		il sistema evade l’ordine e aggiorna le quantità nel catalogo
+		
+		
+		
+	

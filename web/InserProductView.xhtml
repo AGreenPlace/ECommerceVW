@@ -5,32 +5,87 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-<f:view>
-    <h:form>
-        <p>Name: </p><h:inputText value="#{insertProductViewController.name}"
-                                  required="true"
-                                  requiredMessage="Name is mandatory"
-                                  id="name"/><h:message for="name" />
-        <p>Description: </p><h:inputText value="#{insertProductViewController.description}"
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/css.css"/>
+</head>
+<h:body>
+    <f:view>
+        <h:form>
+            <div class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <h:commandLink value ="Insert a New Product" action="InserProductView.xhtml"/>
+                        </li>
+                        <li>
+                            <h:commandLink value="View Orders" action="HistoryOrders.xhtml"/>
+                        </li>
+                        <li>
+                            <h:commandLink value="Evadi Ordine" action="ValidateOrderView.xhtml"/>
+                        </li>
+                    </ul>
+                    <p class="navbar-text navbar-right">
+                        <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
+                    </p>
+                </div>
+            </div>
+        </h:form>
+        <h:form>
+            <div class="row">
+                <div class="thumbnail">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Name</span>
+                            <h:inputText aria-describedby="basic-addon1" value="#{insertProductViewController.name}"
                                          required="true"
-                                         requiredMessage="Description is mandatory"
-                                         id="description"/><h:message for="description" />
-        <p>Code: </p><h:inputText value="#{insertProductViewController.code}"
-                                        required="true"
-                                        requiredMessage="Code is mandatory"
-                                        id="code"/><h:message for="code" />
-        <p>Price: </p><h:inputText value="#{insertProductViewController.price}"
-                                   required="true"
-                                   requiredMessage="Price is mandatory"
-                                   converterMessage="Price must be a number" id="price"/><h:message for="price" />
+                                         requiredMessage="Name is mandatory"
+                                         id="name"/><h:message for="name" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2">Description</span>
+                            <h:inputText aria-describedby="basic-addon2" value="#{insertProductViewController.description}"
+                                                         required="true"
+                                                         requiredMessage="Description is mandatory"
+                                                         id="description"/><h:message for="description" />
+                        </div>
+                    </div>
 
-        <p>Quantity: </p><h:inputText value="#{insertProductViewController.quantity}"
-                                      required="true"
-                                      requiredMessage="Quantity is mandatory"
-                                      converterMessage="Quantity must be a number" id="quantity"/><h:message for="quantity" />
-        <p>Immagine: </p><h:inputText value="#{insertProductViewController.img}"/>
-        <h:commandButton value="Insert Product" action="#{insertProductViewController.addProduct()}"/>
-    </h:form>
-</f:view>
+                </div>
+            </div>
+            <div class="row">
+            <div class="thumbnail">
+            <div class="col-md-6">
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3">Code</span>
+            <h:inputText aria-describedby="basic-addon3" value="#{insertProductViewController.code}"
+                                            required="true"
+                                            requiredMessage="Code is mandatory"
+                                            id="code"/><h:message for="code" />
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon4">Price</span>
+            <h:inputText aria-describedby="basic-addon4" value="#{insertProductViewController.price}"
+                                       required="true"
+                                       requiredMessage="Price is mandatory"
+                                       converterMessage="Price must be a number" id="price"/><h:message for="price" />
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <p>Quantity: </p><h:inputText value="#{insertProductViewController.quantity}"
+                                          required="true"
+                                          requiredMessage="Quantity is mandatory"
+                                          converterMessage="Quantity must be a number" id="quantity"/><h:message for="quantity" />
+            <p>Immagine: </p><h:inputText value="#{insertProductViewController.img}"/>
+            <h:commandButton value="Insert Product" action="#{insertProductViewController.addProduct()}"/>
+        </h:form>
+    </f:view>
+</h:body>
 </html>
 
