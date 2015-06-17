@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml">
+  <component name="DataSourceManagerImpl" format="xml" hash="0">
     <data-source source="LOCAL" name="database/OpenJPA" uuid="eb76468a-3810-4072-9099-720ce6064472">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

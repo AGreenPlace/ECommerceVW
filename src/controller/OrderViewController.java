@@ -41,6 +41,9 @@ public class OrderViewController {
     public String addProductToOrder(){
         Prodotto prodottoDaAggiungere = this.mainController.getProductFromCatalog(this.idProdottoDaAggiungere);
         String output;
+        if (this.quantity == null){
+            return null;
+        }
         Integer selectedQuantity=new Integer(this.quantity);
 
         if((prodottoDaAggiungere.getQuantity()>= selectedQuantity)&& prodottoDaAggiungere.getQuantity()>0){

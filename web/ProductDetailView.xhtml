@@ -8,8 +8,8 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css.css"/>
-    <link rel="stylesheet" type="text/css" href="productDetailViewCss.css"/>
+    <link rel="stylesheet" type="text/css" href="css/css.css"/>
+    <link rel="stylesheet" type="text/css" href="css/productDetailViewCss.css"/>
 </head>
 <h:body>
 <f:view>
@@ -23,7 +23,7 @@
                 </li>
                 <li>
                     <h:form>
-                        <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
+                        <h:commandButton value="Signup" action="SignUpView"/>
                     </h:form>
                 </li>
                 <li>
@@ -40,12 +40,12 @@
 
     <div class="row">
         <div class="thumbnail">
-            <img class="productDetailImg" src="/Users/Andrea/Desktop/ECommerceVW%20Style/FaceDetail.png"/>
+            <img class="productDetailImg" src="${productDetailViewController.currentProd.img}"/>
             <div class="caption">
                 <h1>${productDetailViewController.currentProd.name}</h1>
                 <p>${productDetailViewController.currentProd.description}</p>
                 <p>${productDetailViewController.currentProd.quantity}</p>
-                <p>${productDetailViewController.currentProd.price} $</p>
+                <p>${productDetailViewController.currentProd.price}</p>
             </div>
         </div>
     </div>
