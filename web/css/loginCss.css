@@ -1,0 +1,20 @@
+.input-group{
+    margin-top: 50px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-default{
+    margin-top: 50px;
+    background-color: #b3cde0;
+    color: #03396c;
+}
+
+body{
+    background-color: #03396c;
+}
+
+h1{
+    color: #b3cde0;
+}

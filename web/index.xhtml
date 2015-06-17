@@ -8,54 +8,84 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/css.css"/>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <h:body>
     <f:view>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <h:form>
+                            <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
+                        </h:form>
+                    </li>
+                    <li>
+                        <h:form>
+                            <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
+                        </h:form>
+                    </li>
+                    <li>
+                        <h:form>
+                            <h:commandButton value="Display Orders" action="HistoryOrders"/>
+                        </h:form>
+                    </li>
+                </ul>
+                <p class="navbar-text navbar-right">
+                    <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
+                </p>
+            </div>
+        </nav>
 
-        <h:outputText value="${catalogViewController.mainController.currentUser.email}"/>
-        <h:form>
-        <h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>
-        </h:form>
-        <h:form>
-            <h:commandButton value="Sign Up" action="SignUpView"/>
-        </h:form>
-        <h:form>
-            <h:commandButton value="Display Orders" action="HistoryOrders"/>
-        </h:form>
-     <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
-         <h:form>
 
-             <div id="container">
-                 <div class="containerImg">
-                    <img src="${prodotto.img}" alt="C:\Users\Luca\IdeaProjects\ECommerceVW\web\images\noImage.jpeg"/>
-                 </div>
-                     <div class="textContainer">
-                         <h:commandLink action="#{productDetailViewController.initWithId(prodotto.id)}">
-                         <p>Nome: ${prodotto.name}</p>
-                         <p>Disponibilità: ${prodotto.quantity}</p>
-                         </h:commandLink>
 
-                 </div>
-             </div>
-    <!--         <div class="row">
-                 <div class="col-sm-6 col-md-4">
-                     <div class="thumbnail">
-                         <img src="${prodotto.img}" alt="diobabbano"/>
-                         <div class="caption">
-                             <h3>Nome: ${prodotto.name}</h3>
-                             <p>Desc: ${prodotto.description}</p>
-                             <p>Price: ${prodotto.price}</p>
-                             <p>Quantity: ${prodotto.quantity}</p>
-                             <h:form>
-                             <h:commandButton class="btn btn-primary" value="View" action="#{productDetailViewController.initWithId(prodotto.id)}"/>
-                             </h:form>
-                         </div>
-                     </div>
-                 </div>
-             </div>-->
+        <!--<h:form>-->
+        <!--<h:commandButton value="Login" action="#{loginViewController.setPreviousPagePath('index.xhtml')}"/>-->
+        <!--</h:form>-->
+        <!--<h:form>-->
+            <!--<h:commandButton value="Sign Up" action="SignUpView"/>-->
+        <!--</h:form>-->
+        <!--<h:form>-->
+            <!--<h:commandButton value="Display Orders" action="HistoryOrders"/>-->
+        <!--</h:form>-->
 
-         </h:form>
+
+        <ui:repeat value="${catalogViewController.displayCatalog()}" var="prodotto" >
+
+
+             <!--<h:form>-->
+                <!--<div id="container">-->
+                     <!--<div class="containerImg">-->
+                        <!--<img src="${prodotto.img}" alt="C:\Users\Luca\IdeaProjects\ECommerceVW\web\images\noImage.jpeg"/>-->
+                     <!--</div>-->
+                     <!--<div class="textContainer">-->
+                         <!--<h:commandLink action="#{productDetailViewController.initWithId(prodotto.id)}">-->
+                            <!--<p>Nome: ${prodotto.name}</p>-->
+                             <!--<p>Disponibilità: ${prodotto.quantity}</p>-->
+                         <!--</h:commandLink>-->
+
+                     <!--</div>-->
+                <!--</div>-->
+            <!--</h:form>-->
+        <!--</ui:repeat>-->
+            <h:form>
+                <div class="row">
+                    <div class="thumbnail">
+                        <h:commandLink action="#{productDetailViewController.initWithId(prodotto.id)}">
+                            <div class="col-md-2">
+                                <img class="productCatalogImg" src="/Users/Andrea/Desktop/ECommerceVW%20Style/Face.png"/>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="caption">
+                                    <h3>${prodotto.name}</h3>
+                                    <div class="catalogProductDescription"><p>${prodotto.description}</p></div>
+                                    <ins>Quantity: ${prodotto.quantity}</ins><p>Price: ${prodotto.price}</p>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                    </div>
+                </div>
+            </h:form>
         </ui:repeat>
     </f:view>
 </h:body>

@@ -1,46 +1,61 @@
-
-/*START CATALOGO*/
-body{
-    background-color: #03396c;
+.productCatalogImg{
+    width: 200px;
+    height: 200px;
+    
+}
+.thumbnail{
+    border: hidden;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #b3cde0;
 }
 
-#container {
-    height: 400px;
-    width: 400px;
-    background-color: #011f4b;
-    border: 2px black;
-    border-radius: 10%;
-    border-style: solid;
-    border-width: 1px;
+.thumbnailContent{
+    border: medium;
     border-color: black;
-    margin-bottom: 8px;
 }
 
-.textContainer {
-    display: inline-block;
-    background-color: aqua;
-    width: 250px;
-    height: 250px;
-    float: left;
+.row{
+    border:1px solid #005b96;
+    margin-bottom: 20px;
+    border-radius:4px;
+    margin-right: 40px;
+    margin-left: 40px;
+    background-color: #b3cde0;
 }
 
-.textContainer h2{
-    width: 100px;
+.col-md-2{
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
+
+.catalogProductDescription{
     height: 100px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.navbar-right{
+    margin-right: 15px;
+}
+
+.navbar-text{
+    color: #b3cde0 !important;
+}
+
+.navbar-inverse {
+    background-color: #03396c;
+    color: #011f4b;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+    color: #b3cde0;
+}
+
+body{
     background-color: #6497b1;
 }
 
-.textContainer p{
-    width: 100px;
-    height: 100px;
-    background-color: #6497b1;
+.caption>h3, .caption>ins, .catalogProductDescription{
+    color:#03396c;
 }
-
-.immagineCatalogo {
-    width: 120px;
-    height: 120px;
-    background-color: yellow;
-    float: left;
-}
-
-/*END CATALOGO*/

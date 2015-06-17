@@ -1,0 +1,9 @@
+.thumbnail{
+    text-align: center;
+}
+
+.productDetailImg{
+    min-height: 300px;
+    margin-top: 10px;
+    max-width: 948px;
+}

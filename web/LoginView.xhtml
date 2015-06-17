@@ -6,34 +6,48 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 <head>
-    <!-- BOOTSTRAP START-->
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
-    <!-- BOOTSTRAP END-->
-
-    <link rel="stylesheet" type="text/css" href="css/LoginView.css"/></head>
+    <link rel="stylesheet" type="text/css" href="./loginCss.css"/>
+    <link rel="stylesheet" type="text/css" href="css/LoginView.css"/>
+</head>
 <h:body>
-    <div class="container">
-        <div class="pageContent">
-            <h1 id="title">Login</h1>
-            <h:outputText value="${loginViewController.previousPagePath}"/>
-            <f:view>
-                <h:form>
-                    <div class="form-group">
-                        <label for="emailField">Email</label>
-                        <h:inputText styleClass="form-control" id="emailField" value="#{loginViewController.username}"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordField">Password</label>
-                        <h:inputSecret styleClass="form-control" id="passwordField" value="#{loginViewController.password}"/>
-                    </div>
-                    <h:commandButton value="Login" action="#{loginViewController.authenticate()}"/>
-                </h:form>
-            </f:view>
-        </div>
+    <!--<div class="container">-->
+        <!--<div class="pageContent">-->
+            <!--<h1 id="title">Login</h1>-->
+            <!--<h:outputText value="${loginViewController.previousPagePath}"/>-->
+            <!--<f:view>-->
+                <!--<h:form>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="emailField">Email</label>-->
+                        <!--<h:inputText styleClass="form-control" id="emailField" value="#{loginViewController.username}"/>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="passwordField">Password</label>-->
+                        <!--<h:inputSecret styleClass="form-control" id="passwordField" value="#{loginViewController.password}"/>-->
+                    <!--</div>-->
+                    <!--<h:commandButton value="Login" action="#{loginViewController.authenticate()}"/>-->
+                <!--</h:form>-->
+            <!--</f:view>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+    <div class="loginElements" style="text-align: center">
+        <h1>Login</h1>
+        <f:view>
+            <h:form>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Email</span>
+                    <h:inputText type="text" class="form-control" aria-describedby="basic-addon1" value="#{loginViewController.username}"/>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Password</span>
+                    <h:inputSecret type="text" class="form-control" aria-describedby="basic-addon1" value="#{loginViewController.password}"/>
+                </div>
+                    <h:commandButton class="btn btn-default" type="submit" value="Login" action="#{loginViewController.authenticate()}"/>
+            </h:form>
+        </f:view>
     </div>
 </h:body>
 </html>
